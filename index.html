@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio · Life OS</title>
+  <meta name="description" content="Life OS — sistema operativo personal para tu evolución.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <div class="app-shell">
+  <!-- ============ SIDEBAR (navegación) ============ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__brand">
+      <span class="sidebar__brand-name">LIFE <em>OS</em></span>
+      <span class="sidebar__brand-sub">Sistema operativo personal</span>
+    </div>
+
+    <nav class="sidebar__nav" aria-label="Navegación principal">
+        <a href="index.html" class="nav-item is-active" aria-current="page">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v9a1 1 0 0 0 1 1h4v-6h3v6h4a1 1 0 0 0 1-1v-9"/></svg>
+          <span>Inicio</span>
+        </a>
+        <a href="objetivos.html" class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 5-5.5"/></svg>
+          <span>Objetivos</span>
+        </a>
+        <a href="habitos.html" class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m17 2 4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+          <span>Hábitos</span>
+        </a>
+        <a href="proyectos.html" class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a1 1 0 0 1 1-1h4.5l2 2.5H20a1 1 0 0 1 1 1V18a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7Z"/></svg>
+          <span>Proyectos</span>
+        </a>
+        <a href="roadmap.html" class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4 3 6.5v13L9 17l6 3 6-2.5v-13L15 7 9 4Z"/><path d="M9 4v13"/><path d="M15 7v13"/></svg>
+          <span>Roadmap</span>
+        </a>
+        <a href="progreso.html" class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 20V10"/><path d="M12 20V4"/><path d="M18 20v-7"/></svg>
+          <span>Progreso</span>
+        </a>
+        <a href="finanzas.html" class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20"/><path d="M17 6.5c0-1.9-2.2-3.5-5-3.5s-5 1.4-5 3.3c0 4 10 1.9 10 5.9 0 2-2.2 3.3-5 3.3s-5-1.6-5-3.5"/></svg>
+          <span>Finanzas</span>
+        </a>
+        <a href="diario.html" class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5V5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0 0 4h14"/></svg>
+          <span>Diario</span>
+        </a>
+        <a href="ajustes.html" class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></svg>
+          <span>Ajustes</span>
+        </a>
+    </nav>
+
+    <div class="sidebar__footer">
+      <div class="quote-widget">
+        <img class="quote-widget__bg" src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=900&q=75" alt="" role="presentation">
+        <p class="quote-widget__text">&ldquo;Cada pequeño paso te acerca a tu mejor versión.&rdquo;</p>
+      </div>
+
+      <a href="login.html" class="sidebar__signout">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/></svg>
+        <span>Cerrar sesión</span>
+      </a>
+    </div>
+  </aside>
+
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+
+    <main class="app-main">
+      <div class="app-main__inner">
+      <!-- ============ TOPBAR ============ -->
+      <header class="topbar">
+        <button class="icon-btn topbar__menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="sidebar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"/><path d="M3 12h18"/><path d="M3 18h18"/></svg>
+        </button>
+        <h1 class="topbar__page-title">Inicio</h1>
+
+        <div class="topbar__actions">
+          <button class="icon-btn topbar__notif" aria-label="Notificaciones">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 4.5 1.5 6 1.5 6h-15S6 12.5 6 8Z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
+            <span class="topbar__notif-dot"></span>
+          </button>
+          <a href="ajustes.html" class="topbar__avatar">
+            <img src="assets/img/avatars/avatar-user.svg" alt="Avatar del usuario">
+          </a>
+        </div>
+      </header>
+
+        <section class="hero fade-up">
+          <img class="hero__bg" src="https://images.unsplash.com/photo-1513348363826-2aa8aac7c372?auto=format&fit=crop&w=1800&q=75" alt="Paisaje nocturno de Noruega con aurora boreal">
+          <div class="hero__content">
+            <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg> Objetivo principal</span>
+            <h1 class="hero__title">Vivir en Noruega <span class="hero__flag">🇳🇴</span></h1>
+            <p class="hero__tagline">Construyendo paso a paso la vida que quiero.</p>
+
+            <div class="hero__row">
+              <div class="hero__ring">
+                <svg viewBox="0 0 100 100">
+                  <circle class="hero__ring-bg" cx="50" cy="50" r="42"/>
+                  <circle class="hero__ring-fg" cx="50" cy="50" r="42" style="--pct:0"/>
+                </svg>
+                <div class="hero__ring-label">
+                  <span class="hero__ring-pct">0%</span>
+                  <span class="hero__ring-text">Completado</span>
+                </div>
+              </div>
+              <div class="hero__meta">
+                <div class="hero__meta-item">
+                  <span>Próximo paso</span>
+                  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H19a1 1 0 0 1 1 1v15l-3-1.5-3 1.5-3-1.5-3 1.5-3-1.5V5.5Z"/></svg>Sin definir</span>
+                </div>
+                <div class="hero__meta-item">
+                  <span>Meta final</span>
+                  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="16" rx="2"/><path d="M8 3v4"/><path d="M16 3v4"/><path d="M3.5 10h17"/></svg>Sin definir</span>
+                </div>
+              </div>
+            </div>
+
+            <a href="roadmap.html" class="btn btn--primary btn--sm hero__cta">
+              Ver roadmap completo <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+            </a>
+          </div>
+        </section>
+
+        <section class="section fade-up">
+          <div class="section__header">
+            <h2 class="section__title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="16" rx="2"/><path d="M8 3v4"/><path d="M16 3v4"/><path d="M3.5 10h17"/></svg> Hoy</h2>
+          </div>
+          <div class="grid grid--today stagger">
+
+            <div class="card card--interactive today-widget">
+              <div class="card__header">
+                <span class="card__title">Tareas del día</span>
+                <span class="tag tag--accent">0/3</span>
+              </div>
+              <div class="today-widget__list">
+                <label class="checklist-item">
+                  <input type="checkbox">
+                  <span class="checklist-item__box"></span>
+                  <span class="checklist-item__text">Estudiar inglés</span>
+                </label>
+                <label class="checklist-item">
+                  <input type="checkbox">
+                  <span class="checklist-item__box"></span>
+                  <span class="checklist-item__text">Entrenar</span>
+                </label>
+                <label class="checklist-item">
+                  <input type="checkbox">
+                  <span class="checklist-item__box"></span>
+                  <span class="checklist-item__text">Avanzar en un proyecto</span>
+                </label>
+              </div>
+              <button type="button" class="btn btn--ghost btn--sm btn--block">Agregar tarea</button>
+            </div>
+
+            <div class="card card--interactive today-widget">
+              <div class="card__header">
+                <span class="card__title">Hábitos</span>
+                <span class="tag tag--accent">0/3</span>
+              </div>
+              <div class="today-widget__list">
+                <label class="checklist-item">
+                  <input type="checkbox">
+                  <span class="checklist-item__box"></span>
+                  <span class="checklist-item__text">Leer 10 páginas</span>
+                </label>
+                <label class="checklist-item">
+                  <input type="checkbox">
+                  <span class="checklist-item__box"></span>
+                  <span class="checklist-item__text">Meditar 10 minutos</span>
+                </label>
+                <label class="checklist-item">
+                  <input type="checkbox">
+                  <span class="checklist-item__box"></span>
+                  <span class="checklist-item__text">Tomar 2L de agua</span>
+                </label>
+              </div>
+              <a href="habitos.html" class="btn btn--ghost btn--sm btn--block">Ver hábitos</a>
+            </div>
+
+            <div class="card card--interactive today-widget">
+              <div class="card__header">
+                <span class="card__title">Entrenamiento</span>
+              </div>
+              <div class="today-widget__feature">
+                <div class="today-widget__feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 7v10"/><path d="M18 7v10"/><path d="M3 10v4"/><path d="M21 10v4"/><path d="M6 12h12"/></svg></div>
+                <div class="today-widget__feature-body">
+                  <div class="today-widget__feature-title">Sin rutina asignada</div>
+                  <div class="today-widget__feature-sub">Creá tu primera rutina</div>
+                </div>
+              </div>
+              <button type="button" class="btn btn--accent btn--block">Comenzar</button>
+            </div>
+
+            <div class="card card--interactive today-widget">
+              <div class="card__header">
+                <span class="card__title">Estudio</span>
+              </div>
+              <div class="today-widget__feature">
+                <div class="today-widget__feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H19a1 1 0 0 1 1 1v15l-3-1.5-3 1.5-3-1.5-3 1.5-3-1.5V5.5Z"/></svg></div>
+                <div class="today-widget__feature-body">
+                  <div class="today-widget__feature-title">Sin curso activo</div>
+                  <div class="today-widget__feature-sub">Elegí qué vas a estudiar</div>
+                </div>
+              </div>
+              <button type="button" class="btn btn--ghost btn--block">Empezar</button>
+            </div>
+
+          </div>
+        </section>
+
+        <section class="section fade-up">
+          <div class="section__header">
+            <h2 class="section__title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg> Objetivos</h2>
+            <a href="objetivos.html" class="card__link">Ver todos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
+          </div>
+          <div class="card">
+            <a href="objetivos.html" class="goal-row">
+              <img class="goal-row__thumb" src="https://images.unsplash.com/photo-1513348363826-2aa8aac7c372?auto=format&fit=crop&w=1800&q=75" alt="">
+              <div class="goal-row__body">
+                <div class="goal-row__title-row">
+                  <span class="goal-row__title">Vivir en Noruega</span>
+                  <span class="goal-row__percent">0%</span>
+                </div>
+                <div class="progress progress--thin"><div class="progress__fill" style="--value:0%"></div></div>
+              </div>
+              <span class="goal-row__chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></span>
+            </a>
+            <a href="objetivos.html" class="goal-row">
+              <img class="goal-row__thumb" src="https://images.unsplash.com/photo-1769794371055-54436b54577e?auto=format&fit=crop&w=1600&q=75" alt="">
+              <div class="goal-row__body">
+                <div class="goal-row__title-row">
+                  <span class="goal-row__title">Aprender inglés</span>
+                  <span class="goal-row__percent">0%</span>
+                </div>
+                <div class="progress progress--thin"><div class="progress__fill" style="--value:0%"></div></div>
+              </div>
+              <span class="goal-row__chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></span>
+            </a>
+            <a href="objetivos.html" class="goal-row">
+              <img class="goal-row__thumb" src="https://images.unsplash.com/photo-1740226174487-90feffd82dda?auto=format&fit=crop&w=1600&q=75" alt="">
+              <div class="goal-row__body">
+                <div class="goal-row__title-row">
+                  <span class="goal-row__title">Correr maratón</span>
+                  <span class="goal-row__percent">0%</span>
+                </div>
+                <div class="progress progress--thin"><div class="progress__fill" style="--value:0%"></div></div>
+              </div>
+              <span class="goal-row__chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></span>
+            </a>
+            <a href="objetivos.html" class="goal-row">
+              <img class="goal-row__thumb" src="https://images.unsplash.com/photo-1633158829875-e5316a358c6f?auto=format&fit=crop&w=1600&q=75" alt="">
+              <div class="goal-row__body">
+                <div class="goal-row__title-row">
+                  <span class="goal-row__title">Ahorrar dinero</span>
+                  <span class="goal-row__percent">0%</span>
+                </div>
+                <div class="progress progress--thin"><div class="progress__fill" style="--value:0%"></div></div>
+              </div>
+              <span class="goal-row__chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></span>
+            </a>
+          </div>
+        </section>
+
+        <section class="grid grid--2col fade-up">
+          <div class="card">
+            <div class="card__header">
+              <span class="card__title">Roadmap: Vivir en Noruega</span>
+              <a href="roadmap.html" class="card__link">Ver completo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
+            </div>
+            <div class="roadmap-stepper">
+            <div class="roadmap-step">
+              <div class="roadmap-step__node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H19a1 1 0 0 1 1 1v15l-3-1.5-3 1.5-3-1.5-3 1.5-3-1.5V5.5Z"/></svg></div>
+              <span class="roadmap-step__label">Base de inglés</span>
+              <span class="roadmap-step__pct">0%</span>
+            </div>
+            <div class="roadmap-step">
+              <div class="roadmap-step__node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20"/><path d="M17 6.5c0-1.9-2.2-3.5-5-3.5s-5 1.4-5 3.3c0 4 10 1.9 10 5.9 0 2-2.2 3.3-5 3.3s-5-1.6-5-3.5"/></svg></div>
+              <span class="roadmap-step__label">Fondo de ahorro</span>
+              <span class="roadmap-step__pct">0%</span>
+            </div>
+            <div class="roadmap-step">
+              <div class="roadmap-step__node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 9 10-5 10 5-10 5-10-5Z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg></div>
+              <span class="roadmap-step__label">Certificación</span>
+              <span class="roadmap-step__pct">0%</span>
+            </div>
+            <div class="roadmap-step">
+              <div class="roadmap-step__node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7.5" width="18" height="12" rx="2"/><path d="M8 7.5V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1.5"/><path d="M3 12.5h18"/></svg></div>
+              <span class="roadmap-step__label">Visa</span>
+              <span class="roadmap-step__pct">0%</span>
+            </div>
+            <div class="roadmap-step">
+              <div class="roadmap-step__node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 3.5 2.5 8l4 1.5M11 3.5 19.5 12l-4 4-3-5-3.5 3.5v3l-2-1v-3L5 12l1.5-2 4 1.5M11 3.5 12.5 12"/></svg></div>
+              <span class="roadmap-step__label">Noruega</span>
+              <span class="roadmap-step__pct">0%</span>
+            </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card__header">
+              <span class="card__title">Resumen de progreso</span>
+              <a href="progreso.html" class="card__link">Ver todo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
+            </div>
+            <div class="rings-grid">
+          <div class="progress-ring">
+            <div class="progress-ring__circle">
+              <svg viewBox="0 0 60 60">
+                <circle class="progress-ring__bg" cx="30" cy="30" r="26"/>
+                <circle class="progress-ring__fg" cx="30" cy="30" r="26" style="--pct:0"/>
+              </svg>
+              <span class="progress-ring__value">0%</span>
+            </div>
+            <span class="progress-ring__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H19a1 1 0 0 1 1 1v15l-3-1.5-3 1.5-3-1.5-3 1.5-3-1.5V5.5Z"/></svg>Inglés</span>
+          </div>
+          <div class="progress-ring">
+            <div class="progress-ring__circle">
+              <svg viewBox="0 0 60 60">
+                <circle class="progress-ring__bg" cx="30" cy="30" r="26"/>
+                <circle class="progress-ring__fg" cx="30" cy="30" r="26" style="--pct:0"/>
+              </svg>
+              <span class="progress-ring__value">0%</span>
+            </div>
+            <span class="progress-ring__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 8.5c0-2.5-2-4.5-4.5-4.5-1.5 0-2.7.7-3.5 1.8C11.2 4.7 10 4 8.5 4 6 4 4 6 4 8.5c0 .7.1 1.3.4 1.9h3.1l1.5-2.5 2 5 1.5-2.9H19.6c.3-.6.4-1.3.4-2Z"/><path d="M4.4 10.4C5.6 13.5 9 16.8 12 19.5c3-2.7 6.4-6 7.6-9.1"/></svg>Salud</span>
+          </div>
+          <div class="progress-ring">
+            <div class="progress-ring__circle">
+              <svg viewBox="0 0 60 60">
+                <circle class="progress-ring__bg" cx="30" cy="30" r="26"/>
+                <circle class="progress-ring__fg" cx="30" cy="30" r="26" style="--pct:0"/>
+              </svg>
+              <span class="progress-ring__value">0%</span>
+            </div>
+            <span class="progress-ring__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20"/><path d="M17 6.5c0-1.9-2.2-3.5-5-3.5s-5 1.4-5 3.3c0 4 10 1.9 10 5.9 0 2-2.2 3.3-5 3.3s-5-1.6-5-3.5"/></svg>Finanzas</span>
+          </div>
+          <div class="progress-ring">
+            <div class="progress-ring__circle">
+              <svg viewBox="0 0 60 60">
+                <circle class="progress-ring__bg" cx="30" cy="30" r="26"/>
+                <circle class="progress-ring__fg" cx="30" cy="30" r="26" style="--pct:0"/>
+              </svg>
+              <span class="progress-ring__value">0%</span>
+            </div>
+            <span class="progress-ring__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7.5" width="18" height="12" rx="2"/><path d="M8 7.5V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1.5"/><path d="M3 12.5h18"/></svg>Trabajo</span>
+          </div>
+          <div class="progress-ring">
+            <div class="progress-ring__circle">
+              <svg viewBox="0 0 60 60">
+                <circle class="progress-ring__bg" cx="30" cy="30" r="26"/>
+                <circle class="progress-ring__fg" cx="30" cy="30" r="26" style="--pct:0"/>
+              </svg>
+              <span class="progress-ring__value">0%</span>
+            </div>
+            <span class="progress-ring__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 9 10-5 10 5-10 5-10-5Z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg>Aprendizaje</span>
+          </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="grid grid--2col fade-up">
+          <div class="card">
+            <div class="card__header">
+              <span class="card__title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m17 2 4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>Hábitos</span>
+              <a href="habitos.html" class="card__link">Ver todos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
+            </div>
+            <div class="habit-row">
+              <span class="habit-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H19a1 1 0 0 1 1 1v15l-3-1.5-3 1.5-3-1.5-3 1.5-3-1.5V5.5Z"/></svg></span>
+              <div class="habit-row__body">
+                <div class="habit-row__name">Leer 10 páginas</div>
+                <div class="habit-row__streak">Racha: 0 días</div>
+              </div>
+              <div class="habit-row__days"><span class="habit-row__day"></span><span class="habit-row__day"></span><span class="habit-row__day"></span><span class="habit-row__day"></span><span class="habit-row__day"></span><span class="habit-row__day"></span></div>
+            </div>
+            <div class="habit-row">
+              <span class="habit-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg></span>
+              <div class="habit-row__body">
+                <div class="habit-row__name">Meditar 10 minutos</div>
+                <div class="habit-row__streak">Racha: 0 días</div>
+              </div>
+              <div class="habit-row__days"><span class="habit-row__day"></span><span class="habit-row__day"></span><span class="habit-row__day"></span><span class="habit-row__day"></span><span class="habit-row__day"></span><span class="habit-row__day"></span></div>
+            </div>
+            <div class="habit-row">
+              <span class="habit-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 8-4-16-3 8H2"/></svg></span>
+              <div class="habit-row__body">
+                <div class="habit-row__name">Tomar 2L de agua</div>
+                <div class="habit-row__streak">Racha: 0 días</div>
+              </div>
+              <div class="habit-row__days"><span class="habit-row__day"></span><span class="habit-row__day"></span><span class="habit-row__day"></span><span class="habit-row__day"></span><span class="habit-row__day"></span><span class="habit-row__day"></span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card__header">
+              <span class="card__title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a1 1 0 0 1 1-1h4.5l2 2.5H20a1 1 0 0 1 1 1V18a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7Z"/></svg>Proyectos</span>
+              <a href="proyectos.html" class="card__link">Ver todos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
+            </div>
+            <a href="proyectos.html" class="project-row">
+              <span class="project-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7.5" width="18" height="12" rx="2"/><path d="M8 7.5V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1.5"/><path d="M3 12.5h18"/></svg></span>
+              <div class="project-row__body">
+                <div class="project-row__title">Good Service</div>
+                <div class="project-row__sub">0/0 tareas</div>
+              </div>
+              <span class="project-row__percent">0%</span>
+            </a>
+            <a href="proyectos.html" class="project-row">
+              <span class="project-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.5 5.5l2.8 2.8M15.7 15.7l2.8 2.8M18.5 5.5l-2.8 2.8M8.3 15.7l-2.8 2.8"/></svg></span>
+              <div class="project-row__body">
+                <div class="project-row__title">Tejiendo Sueños</div>
+                <div class="project-row__sub">0/0 tareas</div>
+              </div>
+              <span class="project-row__percent">0%</span>
+            </a>
+            <a href="proyectos.html" class="project-row">
+              <span class="project-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 13 9 5 9-5"/></svg></span>
+              <div class="project-row__body">
+                <div class="project-row__title">Sistema Personal</div>
+                <div class="project-row__sub">0/0 tareas</div>
+              </div>
+              <span class="project-row__percent">0%</span>
+            </a>
+            <a href="proyectos.html" class="card__link" style="margin-top:var(--space-2xs)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg>Nuevo proyecto</a>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="js/nav.js"></script>
+</body>
+</html>

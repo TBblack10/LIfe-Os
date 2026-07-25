@@ -1,0 +1,73 @@
+/* ============================================
+   SHELL — layout de una sola columna. La navegación vive en un
+   drawer (sidebar) que se abre con el botón de hamburguesa, siempre
+   arriba del contenido, nunca ocupando una columna fija.
+   ============================================ */
+
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.app-main {
+  flex: 1;
+  min-width: 0;
+  padding: var(--space-md) var(--space-lg) var(--space-3xl);
+}
+
+.app-main__inner {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+/* Grids reutilizables de contenido */
+.grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grid--today {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.grid--projects {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.grid--2col {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 1024px) {
+  .app-main {
+    padding: var(--space-sm) var(--space-md) var(--space-2xl);
+  }
+
+  .grid--today,
+  .grid--projects,
+  .grid--2col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .rings-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .app-main {
+    padding: var(--space-sm) var(--space-sm) var(--space-xl);
+  }
+
+  .grid--today,
+  .grid--projects,
+  .grid--2col {
+    grid-template-columns: 1fr;
+  }
+}

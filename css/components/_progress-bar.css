@@ -1,0 +1,31 @@
+/* ============================================
+   PROGRESS BAR
+   Uso: <div class="progress"><div class="progress__fill" style="--value:68%"></div></div>
+   ============================================ */
+
+.progress {
+  position: relative;
+  width: 100%;
+  height: 6px;
+  background-color: var(--color-border-soft);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.progress__fill {
+  --value: 0%;
+  position: absolute;
+  inset: 0;
+  width: var(--value);
+  border-radius: var(--radius-full);
+  background: var(--gradient-accent);
+  transform-origin: left center;
+  animation: progress-grow var(--duration-slow) var(--ease-standard) both;
+}
+
+@keyframes progress-grow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+.progress--thin { height: 4px; }

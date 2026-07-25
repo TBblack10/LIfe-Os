@@ -1,0 +1,148 @@
+/* ============================================
+   GOAL ROW — fila de objetivo (miniatura + progreso + próximo paso)
+   Reemplaza las tarjetas de foto grande: permite mostrar más
+   información (próximo paso) sin ocupar tanto espacio vertical.
+   Se usa en Inicio (embebido) y en la página Objetivos (listado completo).
+   ============================================ */
+
+.goal-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-xs);
+  border-radius: var(--radius-md);
+  transition: background-color var(--duration-base) var(--ease-standard);
+}
+
+.goal-row:hover {
+  background-color: var(--color-surface-hover);
+}
+
+.goal-row__thumb {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.goal-row__body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.goal-row__title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+
+.goal-row__title {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.goal-row__percent {
+  font-family: var(--font-display);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-accent-strong);
+  flex-shrink: 0;
+}
+
+.goal-row__next {
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 160px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.goal-row__next-label {
+  font-size: var(--fs-2xs);
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-eyebrow);
+}
+
+.goal-row__next-value {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+}
+
+.goal-row__chevron {
+  flex-shrink: 0;
+  color: var(--color-text-tertiary);
+}
+
+.goal-row__chevron svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* En la página dedicada de Objetivos mostramos también "próximo paso" */
+.goal-row--full .goal-row__next {
+  display: flex;
+}
+
+/* ============================================
+   PROJECT ROW — versión compacta de proyecto (sin foto), para el
+   widget embebido en Inicio. La página Proyectos dedicada conserva
+   las tarjetas con foto grande (identidad visual propia de Life OS).
+   ============================================ */
+
+.project-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-xs) 0;
+}
+
+.project-row__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface-hover);
+  color: var(--color-accent-strong);
+  flex-shrink: 0;
+}
+
+.project-row__icon svg {
+  width: 17px;
+  height: 17px;
+}
+
+.project-row__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.project-row__title {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+}
+
+.project-row__sub {
+  font-size: var(--fs-2xs);
+  color: var(--color-text-tertiary);
+}
+
+.project-row__percent {
+  font-family: var(--font-display);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-accent-strong);
+  flex-shrink: 0;
+}

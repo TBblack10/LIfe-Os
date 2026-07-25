@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crear cuenta · Life OS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <div class="auth-screen">
+    <div class="auth-screen__visual">
+      <img src="https://images.unsplash.com/photo-1513348363826-2aa8aac7c372?auto=format&fit=crop&w=1800&q=75" alt="">
+      <div class="auth-screen__visual-content">
+        <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg> Life OS</span>
+        <h2>Tu vida, como un sistema que evoluciona.</h2>
+        <p class="text-secondary">Organizá tus objetivos, hábitos y proyectos, y mirá tu progreso real en cada área.</p>
+      </div>
+    </div>
+    <div class="auth-screen__form-side">
+      <div class="auth-card fade-up">
+        <div class="auth-card__brand">
+          <span class="auth-card__brand-name">LIFE <em>OS</em></span>
+        </div>
+        <div class="auth-card__heading">
+          <h1>Creá tu cuenta</h1>
+          <p class="text-secondary">Empezá tu sistema personal desde cero.</p>
+        </div>
+
+        <form class="auth-form">
+          <div class="form-field">
+            <label for="name">Nombre</label>
+            <input type="text" id="name" name="name" placeholder="Tu nombre" autocomplete="name">
+          </div>
+          <div class="form-field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="tu@email.com" autocomplete="email">
+          </div>
+          <div class="form-field">
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" name="password" placeholder="Mínimo 8 caracteres" autocomplete="new-password">
+          </div>
+          <button type="submit" class="btn btn--accent btn--block">Crear cuenta</button>
+        </form>
+
+        <div class="auth-card__divider">o</div>
+
+        <button type="button" class="btn btn--ghost btn--block">Continuar con Google</button>
+
+        <p class="auth-card__footer">¿Ya tenés cuenta? <a href="login.html" class="auth-form__link">Iniciá sesión</a></p>
+
+      </div>
+    </div>
+  </div>
+</body>
+</html>

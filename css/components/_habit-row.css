@@ -1,0 +1,72 @@
+/* ============================================
+   HABIT ROW — hábito con su propia racha (día por día).
+   Reemplaza el contador de racha global que vivía en el sidebar:
+   ahora cada hábito muestra su propia consistencia, que es donde
+   realmente importa.
+   ============================================ */
+
+.habit-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-xs) 0;
+}
+
+.habit-row__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface-hover);
+  color: var(--color-accent-strong);
+  flex-shrink: 0;
+}
+
+.habit-row__icon svg {
+  width: 17px;
+  height: 17px;
+}
+
+.habit-row__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.habit-row__name {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+}
+
+.habit-row__streak {
+  font-size: var(--fs-2xs);
+  color: var(--color-text-tertiary);
+}
+
+.habit-row__days {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.habit-row__day {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.habit-row__day.is-done {
+  background-color: var(--color-success-soft);
+  border-color: var(--color-success);
+}
+
+@media (max-width: 640px) {
+  .habit-row__days {
+    display: none;
+  }
+}

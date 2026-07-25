@@ -1,0 +1,72 @@
+/* ============================================
+   CHECKLIST ITEM
+   Uso: <label class="checklist-item"><input type="checkbox">...</label>
+   Se usa en "Hoy" (tareas y hábitos del día).
+   ============================================ */
+
+.checklist-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  padding: var(--space-2xs) 0;
+  cursor: pointer;
+}
+
+.checklist-item__box {
+  position: relative;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  border: 1.5px solid var(--color-border);
+  background-color: var(--color-bg-elevated);
+  transition: background-color var(--duration-fast) var(--ease-standard),
+              border-color var(--duration-fast) var(--ease-standard);
+}
+
+.checklist-item__box::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 11px;
+  height: 8px;
+  clip-path: polygon(9% 43%, 0 55%, 39% 100%, 100% 21%, 88% 8%, 38% 72%);
+  background-color: #ffffff;
+  transform: scale(0);
+  transition: transform var(--duration-fast) var(--ease-standard);
+}
+
+.checklist-item input[type="checkbox"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.checklist-item input[type="checkbox"]:checked ~ .checklist-item__box {
+  background: var(--gradient-accent);
+  border-color: transparent;
+}
+
+.checklist-item input[type="checkbox"]:checked ~ .checklist-item__box::after {
+  transform: scale(1);
+}
+
+.checklist-item input[type="checkbox"]:focus-visible ~ .checklist-item__box {
+  outline: 2px solid var(--color-accent-strong);
+  outline-offset: 2px;
+}
+
+.checklist-item__text {
+  font-size: var(--fs-sm);
+  color: var(--color-text-primary);
+  transition: color var(--duration-base) var(--ease-standard);
+}
+
+.checklist-item input[type="checkbox"]:checked ~ .checklist-item__text {
+  color: var(--color-text-tertiary);
+  text-decoration: line-through;
+  text-decoration-color: var(--color-text-tertiary);
+}

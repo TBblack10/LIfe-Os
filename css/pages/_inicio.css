@@ -1,0 +1,61 @@
+/* ============================================
+   PÁGINA: INICIO
+   Ajustes específicos que no pertenecen a un componente genérico.
+   ============================================ */
+
+.today-widget {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  min-height: 100%;
+}
+
+.today-widget__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xs);
+}
+
+/* Bloque "Entrenamiento" / "Estudio": tarjeta con icono + info */
+.today-widget__feature {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs);
+  background-color: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.today-widget__feature-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background: var(--gradient-accent);
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.today-widget__feature-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.today-widget__feature-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.today-widget__feature-title {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+}
+
+.today-widget__feature-sub {
+  font-size: var(--fs-xs);
+  color: var(--color-text-tertiary);
+}
+

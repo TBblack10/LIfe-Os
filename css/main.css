@@ -1,0 +1,36 @@
+/* ============================================
+   LIFE OS — main.css
+   Punto de entrada único. Orden ITCSS: tokens > reset >
+   tipografía > layout > componentes > páginas > utilidades.
+   ============================================ */
+
+/* Base */
+@import url("base/_tokens.css");
+@import url("base/_reset.css");
+@import url("base/_typography.css");
+
+/* Layout (estructura de la página) */
+@import url("layout/_grid.css");
+@import url("layout/_sidebar.css");
+@import url("layout/_topbar.css");
+
+/* Componentes (bloques reutilizables) */
+@import url("components/_button.css");
+@import url("components/_badge.css");
+@import url("components/_card.css");
+@import url("components/_progress-bar.css");
+@import url("components/_progress-rings.css");
+@import url("components/_hero.css");
+@import url("components/_goal-row.css");
+@import url("components/_habit-row.css");
+@import url("components/_roadmap-widget.css");
+@import url("components/_project-card.css");
+@import url("components/_checklist-item.css");
+
+/* Páginas (ajustes específicos, después de los componentes para poder sobreescribir) */
+@import url("pages/_inicio.css");
+@import url("pages/_paneles.css");
+@import url("pages/_auth.css");
+
+/* Utilidades (siempre al final: gana especificidad de orden) */
+@import url("utils/_animations.css");

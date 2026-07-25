@@ -1,0 +1,47 @@
+/* ============================================
+   TIPOGRAFÍA — jerarquía global
+   ============================================ */
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-tight);
+  color: var(--color-text-primary);
+}
+
+h1 { font-size: var(--fs-3xl); font-weight: var(--fw-bold); }
+h2 { font-size: var(--fs-xl); }
+h3 { font-size: var(--fs-lg); }
+h4 { font-size: var(--fs-md); }
+
+p {
+  color: var(--color-text-secondary);
+}
+
+/* Etiqueta pequeña en mayúsculas, usada como "eyebrow" sobre títulos
+   y como encabezado de sección/widget (ej. "OBJETIVO PRINCIPAL", "HOY") */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3xs);
+  font-family: var(--font-body);
+  font-size: var(--fs-2xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-accent-strong);
+}
+
+.eyebrow svg {
+  width: 14px;
+  height: 14px;
+}
+
+.text-secondary {
+  color: var(--color-text-secondary);
+}
+
+.text-tertiary {
+  color: var(--color-text-tertiary);
+  font-size: var(--fs-sm);
+}
