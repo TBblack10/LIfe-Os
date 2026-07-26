@@ -1,0 +1,89 @@
+/* ============================================
+   MODAL — usado para crear/editar objetivos, hábitos, proyectos,
+   entradas de diario y tareas. Se inyecta dinámicamente vía
+   js/modals.js (no está duplicado en cada página).
+   ============================================ */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md);
+  background-color: rgba(6, 8, 14, 0.7);
+  backdrop-filter: blur(3px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-base) var(--ease-standard);
+}
+
+.modal-overlay.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal {
+  width: 100%;
+  max-width: 440px;
+  max-height: 88vh;
+  overflow-y: auto;
+  background-color: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(12px) scale(0.98);
+  transition: transform var(--duration-base) var(--ease-standard);
+}
+
+.modal-overlay.is-open .modal {
+  transform: translateY(0) scale(1);
+}
+
+.modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.modal__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-semibold);
+}
+
+.modal__close {
+  flex-shrink: 0;
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.modal__actions {
+  display: flex;
+  gap: var(--space-2xs);
+  margin-top: var(--space-xs);
+}
+
+.modal__actions .btn {
+  flex: 1;
+}
+
+.modal__delete {
+  margin-top: var(--space-sm);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--color-border);
+}
+
+@media (max-width: 480px) {
+  .modal {
+    padding: var(--space-md);
+  }
+}

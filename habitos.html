@@ -36,6 +36,10 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a1 1 0 0 1 1-1h4.5l2 2.5H20a1 1 0 0 1 1 1V18a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7Z"/></svg>
           <span>Proyectos</span>
         </a>
+        <a href="diario.html" class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5V5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0 0 4h14"/></svg>
+          <span>Diario</span>
+        </a>
         <a href="roadmap.html" class="nav-item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4 3 6.5v13L9 17l6 3 6-2.5v-13L15 7 9 4Z"/><path d="M9 4v13"/><path d="M15 7v13"/></svg>
           <span>Roadmap</span>
@@ -47,10 +51,6 @@
         <a href="finanzas.html" class="nav-item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20"/><path d="M17 6.5c0-1.9-2.2-3.5-5-3.5s-5 1.4-5 3.3c0 4 10 1.9 10 5.9 0 2-2.2 3.3-5 3.3s-5-1.6-5-3.5"/></svg>
           <span>Finanzas</span>
-        </a>
-        <a href="diario.html" class="nav-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5V5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0 0 4h14"/></svg>
-          <span>Diario</span>
         </a>
         <a href="ajustes.html" class="nav-item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></svg>
@@ -99,58 +99,22 @@
             <h1>Hábitos</h1>
             <p class="text-secondary">Lo que repetís todos los días es lo que define quién estás siendo.</p>
           </div>
+          <button type="button" class="btn btn--accent btn--sm" onclick="openNuevoHabito()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg> Nuevo hábito</button>
         </div>
 
         <section class="section fade-up">
-          <div class="card" style="max-width:560px">
-            <div class="habit-row">
-              <span class="habit-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H19a1 1 0 0 1 1 1v15l-3-1.5-3 1.5-3-1.5-3 1.5-3-1.5V5.5Z"/></svg></span>
-              <div class="habit-row__body">
-                <div class="habit-row__name">Leer 10 páginas</div>
-                <div class="habit-row__streak">Racha: 0 días</div>
-              </div>
-              <div class="habit-row__days"><span class="habit-row__day"></span><span class="habit-row__day"></span><span class="habit-row__day"></span><span class="habit-row__day"></span><span class="habit-row__day"></span><span class="habit-row__day"></span></div>
-            </div>
-            <div class="habit-row">
-              <span class="habit-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg></span>
-              <div class="habit-row__body">
-                <div class="habit-row__name">Meditar 10 minutos</div>
-                <div class="habit-row__streak">Racha: 0 días</div>
-              </div>
-              <div class="habit-row__days"><span class="habit-row__day"></span><span class="habit-row__day"></span><span class="habit-row__day"></span><span class="habit-row__day"></span><span class="habit-row__day"></span><span class="habit-row__day"></span></div>
-            </div>
-            <div class="habit-row">
-              <span class="habit-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 8-4-16-3 8H2"/></svg></span>
-              <div class="habit-row__body">
-                <div class="habit-row__name">Tomar 2L de agua</div>
-                <div class="habit-row__streak">Racha: 0 días</div>
-              </div>
-              <div class="habit-row__days"><span class="habit-row__day"></span><span class="habit-row__day"></span><span class="habit-row__day"></span><span class="habit-row__day"></span><span class="habit-row__day"></span><span class="habit-row__day"></span></div>
-            </div>
-            <div class="habit-row">
-              <span class="habit-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 8.5c0-2.5-2-4.5-4.5-4.5-1.5 0-2.7.7-3.5 1.8C11.2 4.7 10 4 8.5 4 6 4 4 6 4 8.5c0 .7.1 1.3.4 1.9h3.1l1.5-2.5 2 5 1.5-2.9H19.6c.3-.6.4-1.3.4-2Z"/><path d="M4.4 10.4C5.6 13.5 9 16.8 12 19.5c3-2.7 6.4-6 7.6-9.1"/></svg></span>
-              <div class="habit-row__body">
-                <div class="habit-row__name">Dormir 8 horas</div>
-                <div class="habit-row__streak">Racha: 0 días</div>
-              </div>
-              <div class="habit-row__days"><span class="habit-row__day"></span><span class="habit-row__day"></span><span class="habit-row__day"></span><span class="habit-row__day"></span><span class="habit-row__day"></span><span class="habit-row__day"></span></div>
-            </div>
-            <div class="habit-row">
-              <span class="habit-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.5 3 5 13.5h5.5L11 21l7.5-10.5H13L12.5 3Z"/></svg></span>
-              <div class="habit-row__body">
-                <div class="habit-row__name">Caminar 10.000 pasos</div>
-                <div class="habit-row__streak">Racha: 0 días</div>
-              </div>
-              <div class="habit-row__days"><span class="habit-row__day"></span><span class="habit-row__day"></span><span class="habit-row__day"></span><span class="habit-row__day"></span><span class="habit-row__day"></span><span class="habit-row__day"></span></div>
-            </div>
-          </div>
-          <button type="button" class="btn btn--ghost btn--sm" style="align-self:flex-start"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg> Nuevo hábito</button>
+          <div class="card" id="habitosLista" style="max-width:640px"></div>
         </section>
 
       </div>
     </main>
   </div>
 
+  <script src="js/images.js"></script>
+  <script src="js/ui-helpers.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/modals.js"></script>
   <script src="js/nav.js"></script>
+  <script src="js/render-habitos.js"></script>
 </body>
 </html>

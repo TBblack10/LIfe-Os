@@ -1,0 +1,36 @@
+/* ============================================
+   JOURNAL ENTRY — tarjeta de entrada de diario.
+   ============================================ */
+
+.journal-entry {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+  padding: var(--space-md);
+  cursor: pointer;
+}
+
+.journal-entry__date {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3xs);
+  font-size: var(--fs-2xs);
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-eyebrow);
+}
+
+.journal-entry__date svg {
+  width: 13px;
+  height: 13px;
+}
+
+.journal-entry__text {
+  font-size: var(--fs-sm);
+  color: var(--color-text-primary);
+  line-height: var(--lh-normal);
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

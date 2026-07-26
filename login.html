@@ -29,7 +29,7 @@
           <p class="text-secondary">Iniciá sesión para seguir con tu progreso.</p>
         </div>
 
-        <form class="auth-form">
+        <form class="auth-form" id="loginForm">
           <div class="form-field">
             <label for="email">Email</label>
             <input type="email" id="email" name="email" placeholder="tu@email.com" autocomplete="email">
@@ -48,14 +48,21 @@
           <button type="submit" class="btn btn--accent btn--block">Iniciar sesión</button>
         </form>
 
+        <p class="text-tertiary" style="font-size:var(--fs-2xs); text-align:center">
+          Life OS todavía no tiene backend: "iniciar sesión" continúa con los datos guardados en este navegador.
+        </p>
+
         <div class="auth-card__divider">o</div>
 
-        <button type="button" class="btn btn--ghost btn--block">Continuar con Google</button>
+        <button type="button" class="btn btn--ghost btn--block" disabled title="Próximamente">Continuar con Google</button>
 
         <p class="auth-card__footer">¿No tenés cuenta? <a href="register.html" class="auth-form__link">Creá una</a></p>
 
       </div>
     </div>
   </div>
+
+  <script src="js/store.js"></script>
+  <script src="js/render-auth.js"></script>
 </body>
 </html>

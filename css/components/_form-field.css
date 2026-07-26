@@ -1,0 +1,58 @@
+/* ============================================
+   FORM FIELD — campo de formulario compartido.
+   Usado en Login/Registro (_auth.css) y en todos los modales de
+   creación/edición (_modal.css). Antes vivía duplicado dentro de
+   _auth.css; se extrajo acá para que ambos lo reutilicen.
+   ============================================ */
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+}
+
+.form-field label {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  color: var(--color-text-secondary);
+}
+
+.form-field input,
+.form-field textarea,
+.form-field select {
+  padding: 0 var(--space-sm);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  font-size: var(--fs-sm);
+  font-family: inherit;
+  transition: border-color var(--duration-base) var(--ease-standard),
+              background-color var(--duration-base) var(--ease-standard);
+}
+
+.form-field input,
+.form-field select {
+  height: 46px;
+}
+
+.form-field textarea {
+  padding-top: var(--space-xs);
+  padding-bottom: var(--space-xs);
+  min-height: 90px;
+  resize: vertical;
+  line-height: var(--lh-normal);
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: var(--color-text-tertiary);
+}
+
+.form-field input:focus,
+.form-field textarea:focus,
+.form-field select:focus {
+  outline: none;
+  border-color: var(--color-accent-strong);
+  background-color: var(--color-surface-hover);
+}

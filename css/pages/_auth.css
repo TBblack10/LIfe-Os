@@ -91,40 +91,6 @@
   font-size: var(--fs-sm);
 }
 
-.form-field {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2xs);
-}
-
-.form-field label {
-  font-size: var(--fs-xs);
-  font-weight: var(--fw-medium);
-  color: var(--color-text-secondary);
-}
-
-.form-field input {
-  height: 46px;
-  padding: 0 var(--space-sm);
-  border-radius: var(--radius-sm);
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
-  color: var(--color-text-primary);
-  font-size: var(--fs-sm);
-  transition: border-color var(--duration-base) var(--ease-standard),
-              background-color var(--duration-base) var(--ease-standard);
-}
-
-.form-field input::placeholder {
-  color: var(--color-text-tertiary);
-}
-
-.form-field input:focus {
-  outline: none;
-  border-color: var(--color-accent-strong);
-  background-color: var(--color-surface-hover);
-}
-
 .auth-form {
   display: flex;
   flex-direction: column;

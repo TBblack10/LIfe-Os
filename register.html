@@ -29,7 +29,7 @@
           <p class="text-secondary">Empezá tu sistema personal desde cero.</p>
         </div>
 
-        <form class="auth-form">
+        <form class="auth-form" id="registerForm">
           <div class="form-field">
             <label for="name">Nombre</label>
             <input type="text" id="name" name="name" placeholder="Tu nombre" autocomplete="name">
@@ -47,12 +47,15 @@
 
         <div class="auth-card__divider">o</div>
 
-        <button type="button" class="btn btn--ghost btn--block">Continuar con Google</button>
+        <button type="button" class="btn btn--ghost btn--block" disabled title="Próximamente">Continuar con Google</button>
 
         <p class="auth-card__footer">¿Ya tenés cuenta? <a href="login.html" class="auth-form__link">Iniciá sesión</a></p>
 
       </div>
     </div>
   </div>
+
+  <script src="js/store.js"></script>
+  <script src="js/render-auth.js"></script>
 </body>
 </html>

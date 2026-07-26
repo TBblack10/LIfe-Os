@@ -18,12 +18,15 @@
 @import url("components/_button.css");
 @import url("components/_badge.css");
 @import url("components/_card.css");
+@import url("components/_form-field.css");
+@import url("components/_modal.css");
 @import url("components/_progress-bar.css");
 @import url("components/_progress-rings.css");
 @import url("components/_hero.css");
 @import url("components/_goal-row.css");
 @import url("components/_habit-row.css");
 @import url("components/_roadmap-widget.css");
+@import url("components/_journal-entry.css");
 @import url("components/_project-card.css");
 @import url("components/_checklist-item.css");
 
