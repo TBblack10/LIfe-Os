@@ -88,6 +88,19 @@
   color: var(--color-accent-strong);
 }
 
+/* Sección secundaria (ej. "Tu semana de un vistazo" en Inicio): mismo
+   patrón, menos peso — refuerza que Hoy es lo prioritario en la página. */
+.section--secondary .section__title {
+  font-size: var(--fs-sm);
+  color: var(--color-text-secondary);
+}
+
+.section--secondary .section__title svg {
+  width: 15px;
+  height: 15px;
+  color: var(--color-text-tertiary);
+}
+
 .card__link svg {
   width: 14px;
   height: 14px;
