@@ -16,7 +16,6 @@
   <aside class="sidebar" id="sidebar">
     <div class="sidebar__brand">
       <span class="sidebar__brand-name">LIFE <em>OS</em></span>
-      <span class="sidebar__brand-sub">Sistema operativo personal</span>
     </div>
 
     <nav class="sidebar__nav" aria-label="Navegación principal">
@@ -52,16 +51,16 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20"/><path d="M17 6.5c0-1.9-2.2-3.5-5-3.5s-5 1.4-5 3.3c0 4 10 1.9 10 5.9 0 2-2.2 3.3-5 3.3s-5-1.6-5-3.5"/></svg>
           <span>Finanzas</span>
         </a>
-        <a href="ajustes.html" class="nav-item">
+        <a href="ajustes.html" class="nav-item nav-item--utility">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></svg>
           <span>Ajustes</span>
         </a>
     </nav>
 
     <div class="sidebar__footer">
-      <div class="quote-widget">
-        <img class="quote-widget__bg" src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=900&q=75" alt="" role="presentation">
-        <p class="quote-widget__text">&ldquo;Cada pequeño paso te acerca a tu mejor versión.&rdquo;</p>
+      <div class="quote-strip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.5 5.5l2.8 2.8M15.7 15.7l2.8 2.8M18.5 5.5l-2.8 2.8M8.3 15.7l-2.8 2.8"/></svg>
+        <span class="quote-strip__text">Cada paso te acerca a tu mejor versión.</span>
       </div>
 
       <a href="login.html" class="sidebar__signout">
@@ -150,51 +149,57 @@
           </div>
         </section>
 
-        <section class="section fade-up">
+        <section class="section fade-up section--secondary">
           <div class="section__header">
-            <h2 class="section__title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg> Objetivos</h2>
-            <div style="display:flex; align-items:center; gap:var(--space-sm)">
-              <button type="button" class="card__link" style="background:none;border:none;cursor:pointer" onclick="openNuevoObjetivo()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg>Nuevo</button>
+            <div>
+              <h2 class="section__title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 13 9 5 9-5"/></svg> Tu semana de un vistazo</h2>
+            </div>
+            <button type="button" class="card__link" style="background:none;border:none;cursor:pointer" onclick="openNuevoObjetivo()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg>Nuevo objetivo</button>
+          </div>
+
+          <div class="card" style="margin-bottom:var(--space-sm)">
+            <div class="card__header">
+              <span class="card__title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg>Objetivos</span>
               <a href="objetivos.html" class="card__link">Ver todos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
             </div>
-          </div>
-          <div class="card" id="objetivosResumen"></div>
-        </section>
-
-        <section class="grid grid--2col fade-up">
-          <div class="card">
-            <div class="card__header">
-              <span class="card__title">Roadmap: Vivir en Noruega</span>
-              <a href="roadmap.html" class="card__link">Ver completo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
-            </div>
-            <div class="roadmap-stepper" id="roadmapResumen"></div>
+            <div id="objetivosResumen"></div>
           </div>
 
-          <div class="card">
-            <div class="card__header">
-              <span class="card__title">Resumen de progreso</span>
-              <a href="progreso.html" class="card__link">Ver todo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
+          <div class="grid grid--2col" style="margin-bottom:var(--space-sm)">
+            <div class="card">
+              <div class="card__header">
+                <span class="card__title">Roadmap</span>
+                <a href="roadmap.html" class="card__link">Ver completo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
+              </div>
+              <div class="roadmap-stepper" id="roadmapResumen"></div>
             </div>
-            <div class="rings-grid" id="progresoResumen"></div>
-          </div>
-        </section>
 
-        <section class="grid grid--2col fade-up">
-          <div class="card">
-            <div class="card__header">
-              <span class="card__title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m17 2 4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>Hábitos</span>
-              <a href="habitos.html" class="card__link">Ver todos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
+            <div class="card">
+              <div class="card__header">
+                <span class="card__title">Progreso</span>
+                <a href="progreso.html" class="card__link">Ver todo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
+              </div>
+              <div class="rings-grid" id="progresoResumen"></div>
             </div>
-            <div id="habitosResumen"></div>
           </div>
 
-          <div class="card">
-            <div class="card__header">
-              <span class="card__title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a1 1 0 0 1 1-1h4.5l2 2.5H20a1 1 0 0 1 1 1V18a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7Z"/></svg>Proyectos</span>
-              <a href="proyectos.html" class="card__link">Ver todos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
+          <div class="grid grid--2col">
+            <div class="card">
+              <div class="card__header">
+                <span class="card__title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m17 2 4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>Hábitos</span>
+                <a href="habitos.html" class="card__link">Ver todos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
+              </div>
+              <div id="habitosResumen"></div>
             </div>
-            <div id="proyectosResumen"></div>
-            <button type="button" class="card__link" style="margin-top:var(--space-2xs); background:none; border:none; cursor:pointer" onclick="openNuevoProyecto()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg>Nuevo proyecto</button>
+
+            <div class="card">
+              <div class="card__header">
+                <span class="card__title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a1 1 0 0 1 1-1h4.5l2 2.5H20a1 1 0 0 1 1 1V18a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7Z"/></svg>Proyectos</span>
+                <a href="proyectos.html" class="card__link">Ver todos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
+              </div>
+              <div id="proyectosResumen"></div>
+              <button type="button" class="card__link" style="margin-top:var(--space-2xs); background:none; border:none; cursor:pointer" onclick="openNuevoProyecto()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg>Nuevo proyecto</button>
+            </div>
           </div>
         </section>
 
