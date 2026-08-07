@@ -9,6 +9,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/auth-guard.js"></script>
 </head>
 <body>
   <div class="app-shell">
@@ -63,7 +68,7 @@
         <span class="quote-strip__text">Cada paso te acerca a tu mejor versión.</span>
       </div>
 
-      <a href="login.html" class="sidebar__signout">
+      <a href="login.html" class="sidebar__signout" id="signoutBtn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/></svg>
         <span>Cerrar sesión</span>
       </a>
@@ -86,8 +91,8 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 4.5 1.5 6 1.5 6h-15S6 12.5 6 8Z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
             <span class="topbar__notif-dot"></span>
           </button>
-          <a href="ajustes.html" class="topbar__avatar">
-            <img src="assets/img/avatars/avatar-user.svg" alt="Avatar del usuario">
+          <a href="ajustes.html" class="topbar__avatar" id="topbarAvatar" title="">
+            <img src="assets/img/avatars/avatar-user.svg" alt="Avatar del usuario" id="topbarAvatarImg">
           </a>
         </div>
       </header>
@@ -212,6 +217,7 @@
   <script src="js/store.js"></script>
   <script src="js/modals.js"></script>
   <script src="js/nav.js"></script>
+  <script src="js/session-ui.js"></script>
   <script src="js/render-inicio.js"></script>
 </body>
 </html>

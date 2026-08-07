@@ -24,6 +24,11 @@
   transform: scale(0.98);
 }
 
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
 .btn--primary {
   background-color: var(--color-text-primary);
   color: var(--color-text-inverse);
@@ -51,6 +56,18 @@
 .btn--ghost:hover {
   border-color: var(--color-accent-border);
   background-color: var(--color-surface-hover);
+}
+
+.btn--google {
+  background-color: #ffffff;
+  color: #1f1f1f;
+  gap: var(--space-sm);
+  border: 1px solid #dadce0;
+}
+
+.btn--google:hover {
+  background-color: #f8f8f8;
+  box-shadow: var(--shadow-sm);
 }
 
 .btn--sm {

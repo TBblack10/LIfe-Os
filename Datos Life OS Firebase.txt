@@ -1,0 +1,9 @@
+const firebaseConfig = {
+  apiKey: "AIzaSyDas0dPyW8V-55G3fwMQ79fNo089kjSUPY",
+  authDomain: "life-os-ef9c9.firebaseapp.com",
+  projectId: "life-os-ef9c9",
+  storageBucket: "life-os-ef9c9.firebasestorage.app",
+  messagingSenderId: "576556998196",
+  appId: "1:576556998196:web:4ce5346ed8db61e45af461",
+  measurementId: "G-7HQQDC4DBQ"
+};

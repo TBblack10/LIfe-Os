@@ -1,26 +1,26 @@
 /**
  * LIFE OS — render-ajustes.js
- * Perfil real (nombre editable) + borrado completo de datos.
+ * Muestra la cuenta de Google real conectada + borrado de datos.
+ * El nombre/foto ya no se editan a mano: vienen de la sesión de Google.
  */
 function renderAjustes() {
-  const u = Store.data().usuario;
-  document.getElementById("ajustesNombre").textContent = u.nombre || "Tu nombre";
-  document.getElementById("ajustesNivel").textContent = `Nivel ${Store.nivel()} · ${u.xpTotal} XP`;
-}
+  const user = Auth.currentUser();
+  const cuentaEl = document.getElementById("ajustesCuenta");
 
-function openEditarPerfil() {
-  const u = Store.data().usuario;
-  Modal.open({
-    title: "Editar perfil",
-    fields: [{ key: "nombre", label: "Tu nombre", type: "text", placeholder: "¿Cómo te llamás?" }],
-    values: u,
-    submitLabel: "Guardar",
-    onSubmit: (values) => {
-      Store.data().usuario.nombre = values.nombre;
-      Store.save();
-      renderAjustes();
-    },
-  });
+  if (user) {
+    cuentaEl.innerHTML = `
+      <div style="width:64px;height:64px;border-radius:50%;overflow:hidden;border:2px solid var(--color-accent-border); flex-shrink:0;">
+        <img src="${user.picture}" alt="${escapeHTML(user.name)}" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div>
+        <div style="font-weight:var(--fw-semibold)">${escapeHTML(user.name)}</div>
+        <div class="text-tertiary" style="font-size:var(--fs-sm)">${escapeHTML(user.email)}</div>
+      </div>`;
+  } else {
+    cuentaEl.innerHTML = `<p class="text-tertiary">No se encontró información de la cuenta.</p>`;
+  }
+
+  document.getElementById("ajustesNivel").textContent = `Nivel ${Store.nivel()} · ${Store.data().usuario.xpTotal} XP`;
 }
 
 function handleResetData() {
@@ -31,4 +31,6 @@ function handleResetData() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", renderAjustes);
+document.addEventListener("DOMContentLoaded", () => {
+  Auth.onReady(() => renderAjustes());
+});
