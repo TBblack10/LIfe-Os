@@ -112,8 +112,32 @@ function seedData() {
   };
 }
 
+// Colecciones que esta fase sincroniza con Firestore (ver firestore-sync.js).
+// Diario/Proyectos/Finanzas/Roadmap quedan afuera a propósito.
+const STORE_SYNC_COLLECTIONS = ["objetivos", "habitos"];
+
 const Store = {
   _data: null,
+  _syncUid: null,
+
+  /** Lo llama Sync.hydrate() una vez, al confirmar sesión. */
+  setSyncUser(uid) {
+    this._syncUid = uid;
+  },
+
+  /** Fire-and-forget: no bloquea ningún método que ya funcionaba síncrono. */
+  _syncPush(collection, itemId) {
+    if (!this._syncUid || !STORE_SYNC_COLLECTIONS.includes(collection)) return;
+    if (typeof Sync === "undefined") return;
+    const item = this.getById(collection, itemId);
+    if (item) Sync.pushItem(this._syncUid, collection, item);
+  },
+
+  _syncDelete(collection, itemId) {
+    if (!this._syncUid || !STORE_SYNC_COLLECTIONS.includes(collection)) return;
+    if (typeof Sync === "undefined") return;
+    Sync.deleteItem(this._syncUid, collection, itemId);
+  },
 
   load() {
     try {
@@ -159,6 +183,7 @@ const Store = {
     const newItem = { id: id(), ...item };
     this.data()[collection].push(newItem);
     this.save();
+    this._syncPush(collection, newItem.id);
     return newItem;
   },
 
@@ -166,6 +191,7 @@ const Store = {
     const item = this.getById(collection, itemId);
     if (item) Object.assign(item, changes);
     this.save();
+    this._syncPush(collection, itemId);
     return item;
   },
 
@@ -174,6 +200,7 @@ const Store = {
     const idx = arr.findIndex((x) => x.id === itemId);
     if (idx > -1) arr.splice(idx, 1);
     this.save();
+    this._syncDelete(collection, itemId);
   },
 
   // ---------- XP / nivel ----------
@@ -211,6 +238,7 @@ const Store = {
       this.addXP(15);
     }
     this.save();
+    this._syncPush("habitos", habitId);
   },
 
   habitStreak(habitId) {
@@ -268,6 +296,7 @@ const Store = {
     if (!g.hitos) g.hitos = [];
     g.hitos.push({ texto, hecho: false });
     this.save();
+    this._syncPush("objetivos", goalId);
   },
 
   toggleHito(goalId, index) {
@@ -275,6 +304,7 @@ const Store = {
     if (!g || !g.hitos || !g.hitos[index]) return;
     g.hitos[index].hecho = !g.hitos[index].hecho;
     this.save();
+    this._syncPush("objetivos", goalId);
   },
 
   removeHito(goalId, index) {
@@ -282,6 +312,7 @@ const Store = {
     if (!g || !g.hitos) return;
     g.hitos.splice(index, 1);
     this.save();
+    this._syncPush("objetivos", goalId);
   },
 };
 

@@ -77,4 +77,4 @@ function openEditHabito(habitId) {
   });
 }
 
-document.addEventListener("DOMContentLoaded", renderHabitosLista);
+window.addEventListener("lifeos:ready", renderHabitosLista);

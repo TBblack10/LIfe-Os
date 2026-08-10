@@ -292,7 +292,7 @@ function openNuevoProyecto() {
 // ---------------------------------------------------------------
 // INIT
 // ---------------------------------------------------------------
-document.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("lifeos:ready", () => {
   renderHero();
   renderHoy();
   renderObjetivosResumen();

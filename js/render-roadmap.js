@@ -37,4 +37,4 @@ function renderHeroRoadmap() {
     </div>
   `;
 }
-document.addEventListener("DOMContentLoaded", renderHeroRoadmap);
+window.addEventListener("lifeos:ready", renderHeroRoadmap);

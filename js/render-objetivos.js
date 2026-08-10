@@ -48,4 +48,4 @@ function openNuevoObjetivo() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", renderObjetivosLista);
+window.addEventListener("lifeos:ready", renderObjetivosLista);

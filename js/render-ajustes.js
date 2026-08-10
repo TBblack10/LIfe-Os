@@ -31,6 +31,4 @@ function handleResetData() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  Auth.onReady(() => renderAjustes());
-});
+window.addEventListener("lifeos:ready", renderAjustes);

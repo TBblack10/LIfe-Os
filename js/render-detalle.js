@@ -132,4 +132,4 @@ function openEditObjetivoDetalle() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", renderDetalle);
+window.addEventListener("lifeos:ready", renderDetalle);

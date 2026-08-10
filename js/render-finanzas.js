@@ -62,4 +62,4 @@ function crearMetaFinanzas() {
   renderFinanzas();
 }
 
-document.addEventListener("DOMContentLoaded", renderFinanzas);
+window.addEventListener("lifeos:ready", renderFinanzas);

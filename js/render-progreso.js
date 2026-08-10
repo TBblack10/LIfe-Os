@@ -8,4 +8,4 @@ function renderXPBadge() {
   if (!el) return;
   el.innerHTML = `${ICONS.target}Nivel ${Store.nivel()} · ${Store.data().usuario.xpTotal} XP`;
 }
-document.addEventListener("DOMContentLoaded", renderXPBadge);
+window.addEventListener("lifeos:ready", renderXPBadge);

@@ -65,4 +65,4 @@ function openEditEntrada(entryId) {
   });
 }
 
-document.addEventListener("DOMContentLoaded", renderDiarioLista);
+window.addEventListener("lifeos:ready", renderDiarioLista);

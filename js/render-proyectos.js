@@ -71,4 +71,4 @@ function openEditProyecto(projectId) {
   });
 }
 
-document.addEventListener("DOMContentLoaded", renderProyectosGrid);
+window.addEventListener("lifeos:ready", renderProyectosGrid);
