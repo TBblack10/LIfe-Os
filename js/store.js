@@ -112,9 +112,9 @@ function seedData() {
   };
 }
 
-// Colecciones que esta fase sincroniza con Firestore (ver firestore-sync.js).
-// Diario/Proyectos/Finanzas/Roadmap quedan afuera a propósito.
-const STORE_SYNC_COLLECTIONS = ["objetivos", "habitos"];
+// Colecciones que se sincronizan con Firestore (ver firestore-sync.js).
+// Finanzas/Roadmap/Progreso/Tareas de hoy quedan afuera a propósito.
+const STORE_SYNC_COLLECTIONS = ["objetivos", "habitos", "diario", "proyectos"];
 
 const Store = {
   _data: null,

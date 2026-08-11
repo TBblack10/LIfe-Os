@@ -7,10 +7,12 @@
  * se reemplaza Firestore por otra cosa, este es el único archivo (junto
  * con auth.js para Auth) que hay que tocar.
  *
- * Alcance de esta fase: SOLO "objetivos" y "habitos". Diario, Proyectos,
- * Finanzas y Roadmap no se tocan — deliberadamente no están en
- * SYNC_COLLECTIONS, así que aunque Store intente sincronizarlos, esta
- * capa los ignora sin hacer nada.
+ * Alcance actual: "objetivos", "habitos", "diario" y "proyectos".
+ * Finanzas, Roadmap, Progreso y Tareas de hoy no se sincronizan
+ * todavía — deliberadamente no están en SYNC_COLLECTIONS, así que
+ * aunque Store intente sincronizarlos, esta capa los ignora sin hacer
+ * nada. Sumar una entidad nueva es agregar su nombre a esta lista (acá
+ * y en STORE_SYNC_COLLECTIONS de store.js) — nada más.
  *
  * Estructura en Firestore: users/{uid}/objetivos/{id}, users/{uid}/habitos/{id}
  * — colecciones separadas por entidad, no un documento único gigante
@@ -19,7 +21,7 @@
  * cambio chico).
  */
 
-const SYNC_COLLECTIONS = ["objetivos", "habitos"];
+const SYNC_COLLECTIONS = ["objetivos", "habitos", "diario", "proyectos"];
 
 const Sync = {
   _db: null,
