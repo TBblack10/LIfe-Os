@@ -1,0 +1,10 @@
+# No desplegar archivos de configuración/control de versiones, no forman
+# parte del sitio público.
+firebase.json
+.firebaserc
+firestore.rules
+.git
+.gitignore
+.DS_Store
+*.md
+node_modules
