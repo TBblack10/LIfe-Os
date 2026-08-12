@@ -76,7 +76,7 @@ function renderHoy() {
   document.getElementById("habitosHoyCount").textContent = `${doneHoy}/${habitos.length}`;
   const habitosList = document.getElementById("habitosHoyList");
   habitosList.innerHTML = habitos.length
-    ? habitos.slice(0, 4).map((h) => `
+    ? habitos.slice(-4).reverse().map((h) => `
         <label class="checklist-item">
           <input type="checkbox" ${Store.isHabitDoneToday(h.id) ? "checked" : ""} onchange="handleToggleHabit('${h.id}')">
           <span class="checklist-item__box"></span>
@@ -131,7 +131,7 @@ function renderHabitosResumen() {
     el.innerHTML = `<p class="text-tertiary" style="padding:var(--space-sm) 0">Todavía no creaste hábitos.</p>`;
     return;
   }
-  el.innerHTML = habitos.slice(0, 3).map((h) => {
+  el.innerHTML = habitos.slice(-3).reverse().map((h) => {
     const dias = Store.habitLast6Days(h.id);
     const dots = dias.map((d) => `<span class="habit-row__day ${d ? "is-done" : ""}"></span>`).join("");
     return `
@@ -156,7 +156,7 @@ function renderProyectosResumen() {
     el.innerHTML = `<p class="text-tertiary" style="padding:var(--space-sm) 0">Todavía no creaste proyectos.</p>`;
     return;
   }
-  el.innerHTML = proyectos.slice(0, 3).map((p) => `
+  el.innerHTML = proyectos.slice(-3).reverse().map((p) => `
     <a href="proyectos.html" class="project-row">
       <span class="project-row__icon">${ICONS.briefcase}</span>
       <div class="project-row__body">
