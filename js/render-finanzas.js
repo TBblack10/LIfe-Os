@@ -41,7 +41,6 @@ function openEditFinanzas(goalId) {
     title: "Editar meta de ahorro",
     fields: [
       { key: "titulo", label: "Título", type: "text", required: true },
-      { key: "porcentaje", label: "Progreso (%)", type: "number", min: 0, max: 100 },
       { key: "proximoPaso", label: "Próximo paso", type: "text" },
       { key: "metaFinal", label: "Meta final", type: "text" },
     ],

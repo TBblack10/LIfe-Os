@@ -33,16 +33,18 @@ function openNuevoObjetivo() {
   Modal.open({
     title: "Nuevo objetivo",
     fields: [
-      { key: "titulo", label: "Título", type: "text", required: true, placeholder: "Ej: Aprender a tocar guitarra" },
+      { key: "titulo", label: "¿Qué querés lograr?", type: "text", required: true, placeholder: "Ej: Aprender a tocar guitarra" },
+      { key: "tagline", label: "¿Para qué querés lograrlo?", type: "textarea", placeholder: "Tu propósito detrás de este objetivo" },
       { key: "emoji", label: "Emoji (opcional)", type: "text", placeholder: "🎯" },
-      { key: "porcentaje", label: "Progreso (%)", type: "number", min: 0, max: 100 },
       { key: "proximoPaso", label: "Próximo paso", type: "text" },
       { key: "metaFinal", label: "Meta final", type: "text", placeholder: "Ej: Dic 2026" },
     ],
-    values: { porcentaje: 0 },
+    values: {},
     submitLabel: "Crear objetivo",
     onSubmit: (values) => {
-      Store.create("objetivos", { ...values, imagen: null, esPrincipal: false, tagline: "" });
+      // El progreso ya no se ingresa a mano: arranca en 0% y se calcula
+      // solo a partir de los pasos que se agreguen desde el detalle.
+      Store.create("objetivos", { ...values, porcentaje: 0, imagen: null, esPrincipal: false });
       renderObjetivosLista();
     },
   });

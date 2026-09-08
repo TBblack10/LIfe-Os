@@ -213,16 +213,16 @@ function openNuevoObjetivo() {
   Modal.open({
     title: "Nuevo objetivo",
     fields: [
-      { key: "titulo", label: "Título", type: "text", required: true, placeholder: "Ej: Aprender a tocar guitarra" },
+      { key: "titulo", label: "¿Qué querés lograr?", type: "text", required: true, placeholder: "Ej: Aprender a tocar guitarra" },
+      { key: "tagline", label: "¿Para qué querés lograrlo?", type: "textarea", placeholder: "Tu propósito detrás de este objetivo" },
       { key: "emoji", label: "Emoji (opcional)", type: "text", placeholder: "🎯" },
-      { key: "porcentaje", label: "Progreso (%)", type: "number", min: 0, max: 100 },
       { key: "proximoPaso", label: "Próximo paso", type: "text" },
       { key: "metaFinal", label: "Meta final", type: "text", placeholder: "Ej: Dic 2026" },
     ],
-    values: { porcentaje: 0 },
+    values: {},
     submitLabel: "Crear objetivo",
     onSubmit: (values) => {
-      Store.create("objetivos", { ...values, imagen: null, esPrincipal: false, tagline: "" });
+      Store.create("objetivos", { ...values, porcentaje: 0, imagen: null, esPrincipal: false });
       renderObjetivosResumen();
       renderHero();
     },
@@ -235,10 +235,9 @@ function openEditObjetivo(goalId) {
   Modal.open({
     title: "Editar objetivo",
     fields: [
-      { key: "titulo", label: "Título", type: "text", required: true },
+      { key: "titulo", label: "¿Qué querés lograr?", type: "text", required: true },
       { key: "emoji", label: "Emoji", type: "text" },
-      { key: "tagline", label: "Frase (solo objetivo principal)", type: "text" },
-      { key: "porcentaje", label: "Progreso (%)", type: "number", min: 0, max: 100 },
+      { key: "tagline", label: "¿Para qué querés lograrlo?", type: "textarea" },
       { key: "proximoPaso", label: "Próximo paso", type: "text" },
       { key: "metaFinal", label: "Meta final", type: "text" },
     ],

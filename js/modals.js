@@ -57,6 +57,16 @@ const Modal = {
               <textarea id="mf_${f.key}" name="${f.key}" ${req} placeholder="${f.placeholder || ""}">${escapeHTML(val)}</textarea>
             </div>`;
         }
+        if (f.type === "select") {
+          const opciones = (f.options || [])
+            .map((o) => `<option value="${escapeHTML(o.value)}" ${o.value === val ? "selected" : ""}>${escapeHTML(o.label)}</option>`)
+            .join("");
+          return `
+            <div class="form-field">
+              <label for="mf_${f.key}">${f.label}</label>
+              <select id="mf_${f.key}" name="${f.key}" ${req}>${opciones}</select>
+            </div>`;
+        }
         return `
           <div class="form-field">
             <label for="mf_${f.key}">${f.label}</label>
@@ -119,7 +129,7 @@ const Modal = {
     }
 
     overlay.classList.add("is-open");
-    const firstInput = modal.querySelector("input, textarea");
+    const firstInput = modal.querySelector("input, textarea, select");
     if (firstInput) setTimeout(() => firstInput.focus(), 50);
   },
 

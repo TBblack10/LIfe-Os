@@ -45,11 +45,21 @@ function openNuevoHabito() {
     fields: [
       { key: "nombre", label: "¿Qué querés repetir?", type: "text", required: true, placeholder: "Ej: Salir a caminar" },
       { key: "icono", label: "Ícono", type: "text", placeholder: "book, target, activity, heart-pulse..." },
+      { key: "fechaInicio", label: "Fecha de inicio", type: "date", required: true },
+      { key: "vecesPorSemana", label: "Veces por semana", type: "number", min: 1, max: 7 },
+      { key: "diasPreferidos", label: "Días preferidos (opcional, orientativo)", type: "text", placeholder: "Ej: Lunes, Miércoles, Viernes" },
     ],
-    values: { icono: "target" },
+    values: { icono: "target", fechaInicio: todayISO(), vecesPorSemana: 7 },
     submitLabel: "Crear hábito",
     onSubmit: (values) => {
-      Store.create("habitos", { nombre: values.nombre, icono: values.icono || "target", completions: [] });
+      Store.create("habitos", {
+        nombre: values.nombre,
+        icono: values.icono || "target",
+        completions: [],
+        fechaInicio: values.fechaInicio || todayISO(),
+        vecesPorSemana: Math.max(1, Math.min(7, Number(values.vecesPorSemana) || 7)),
+        diasPreferidos: splitDiasPreferidos(values.diasPreferidos),
+      });
       renderHabitosLista();
     },
   });
@@ -63,11 +73,25 @@ function openEditHabito(habitId) {
     fields: [
       { key: "nombre", label: "Nombre", type: "text", required: true },
       { key: "icono", label: "Ícono", type: "text" },
+      { key: "fechaInicio", label: "Fecha de inicio", type: "date", required: true },
+      { key: "vecesPorSemana", label: "Veces por semana", type: "number", min: 1, max: 7 },
+      { key: "diasPreferidos", label: "Días preferidos (opcional, orientativo)", type: "text", placeholder: "Ej: Lunes, Miércoles, Viernes" },
     ],
-    values: h,
+    values: {
+      ...h,
+      fechaInicio: h.fechaInicio || todayISO(),
+      vecesPorSemana: h.vecesPorSemana || 7,
+      diasPreferidos: (h.diasPreferidos || []).join(", "),
+    },
     submitLabel: "Guardar cambios",
     onSubmit: (values) => {
-      Store.update("habitos", habitId, values);
+      Store.update("habitos", habitId, {
+        nombre: values.nombre,
+        icono: values.icono,
+        fechaInicio: values.fechaInicio || todayISO(),
+        vecesPorSemana: Math.max(1, Math.min(7, Number(values.vecesPorSemana) || 7)),
+        diasPreferidos: splitDiasPreferidos(values.diasPreferidos),
+      });
       renderHabitosLista();
     },
     onDelete: () => {
@@ -75,6 +99,15 @@ function openEditHabito(habitId) {
       renderHabitosLista();
     },
   });
+}
+
+/** "Lunes, Miércoles, Viernes" -> ["Lunes", "Miércoles", "Viernes"].
+ * Puramente informativo (ver store.js) — no participa en ningún cálculo. */
+function splitDiasPreferidos(texto) {
+  return String(texto || "")
+    .split(",")
+    .map((d) => d.trim())
+    .filter(Boolean);
 }
 
 window.addEventListener("lifeos:ready", renderHabitosLista);

@@ -180,3 +180,41 @@
     font-size: var(--fs-xl);
   }
 }
+
+/* ============================================
+   CELEBRACIÓN — al alcanzar el 100% de un objetivo (V1).
+   Sutil a propósito: sin confeti ni animaciones pesadas, solo un
+   pulso en el anillo y un banner que aparece/desaparece solo.
+   ============================================ */
+
+.celebracion-anillo .hero__ring-fg {
+  animation: celebracion-pulso 1.4s ease-in-out 2;
+}
+
+@keyframes celebracion-pulso {
+  0%, 100% { filter: drop-shadow(0 0 0 transparent); }
+  50% { filter: drop-shadow(0 0 6px var(--color-accent-strong)); }
+}
+
+.celebracion-banner {
+  position: fixed;
+  left: 50%;
+  bottom: var(--space-lg);
+  transform: translate(-50%, 12px);
+  z-index: 400;
+  max-width: 90vw;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg-elevated);
+  border: 1px solid var(--color-accent-border);
+  box-shadow: var(--shadow-lg);
+  font-size: var(--fs-sm);
+  opacity: 0;
+  transition: opacity var(--duration-base) var(--ease-standard),
+              transform var(--duration-base) var(--ease-standard);
+}
+
+.celebracion-banner.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
