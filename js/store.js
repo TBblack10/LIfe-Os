@@ -27,9 +27,15 @@ function todayISO() {
 }
 
 /**
- * Datos de ejemplo iniciales — mismos objetivos/hábitos/proyectos que ya
- * existían en el prototipo estático, pero ahora como semilla real: el
- * usuario puede editarlos o borrarlos, y sus cambios persisten.
+ * Semilla inicial de una cuenta nueva.
+ *
+ * Fase 1: sin datos personales hardcodeados. Antes acá vivían objetivos,
+ * hábitos, proyectos y tareas de ejemplo tomados del prototipo original
+ * (con datos reales de una persona puntual) — cualquier usuario nuevo los
+ * heredaba tal cual. Cada colección arranca vacía; todas las pantallas ya
+ * tienen su estado vacío ("Todavía no creaste...") con su CTA para cargar
+ * el primer dato, así que no hace falta contenido de ejemplo para que la
+ * app sea usable desde el primer login.
  */
 function seedData() {
   return {
@@ -38,76 +44,10 @@ function seedData() {
       xpTotal: 0,
     },
 
-    objetivos: [
-      {
-        id: id(),
-        titulo: "Vivir en Noruega",
-        emoji: "🇳🇴",
-        tagline: "Construyendo paso a paso la vida que quiero.",
-        porcentaje: 0,
-        proximoPaso: "",
-        metaFinal: "",
-        imagen: "hero_noruega",
-        esPrincipal: true,
-        hitos: [],
-      },
-      {
-        id: id(),
-        titulo: "Aprender inglés",
-        emoji: "📘",
-        tagline: "",
-        porcentaje: 0,
-        proximoPaso: "",
-        metaFinal: "",
-        imagen: "goal_ingles",
-        esPrincipal: false,
-        hitos: [],
-      },
-      {
-        id: id(),
-        titulo: "Correr maratón",
-        emoji: "🏃",
-        tagline: "",
-        porcentaje: 0,
-        proximoPaso: "",
-        metaFinal: "",
-        imagen: "goal_maraton",
-        esPrincipal: false,
-        hitos: [],
-      },
-      {
-        id: id(),
-        titulo: "Ahorrar dinero",
-        emoji: "💰",
-        tagline: "",
-        porcentaje: 0,
-        proximoPaso: "",
-        metaFinal: "",
-        imagen: "goal_ahorro",
-        esPrincipal: false,
-        esFinanzas: true,
-        hitos: [],
-      },
-    ],
-
-    habitos: [
-      { id: id(), nombre: "Leer 10 páginas", icono: "book", completions: [] },
-      { id: id(), nombre: "Meditar 10 minutos", icono: "target", completions: [] },
-      { id: id(), nombre: "Tomar 2L de agua", icono: "activity", completions: [] },
-    ],
-
-    proyectos: [
-      { id: id(), titulo: "Good Service", descripcion: "", porcentaje: 0, tareasTotal: 0, tareasHechas: 0, imagen: "project_goodservice" },
-      { id: id(), titulo: "Tejiendo Sueños", descripcion: "", porcentaje: 0, tareasTotal: 0, tareasHechas: 0, imagen: "project_tejiendo" },
-      { id: id(), titulo: "Sistema Personal", descripcion: "", porcentaje: 0, tareasTotal: 0, tareasHechas: 0, imagen: "project_sistema" },
-    ],
-
-    tareasHoy: [
-      { id: id(), texto: "Estudiar inglés", done: false },
-      { id: id(), texto: "Entrenar", done: false },
-      { id: id(), texto: "Avanzar en un proyecto", done: false },
-    ],
-
+    objetivos: [],
+    habitos: [],
+    proyectos: [],
+    tareasHoy: [],
     diario: [],
   };
 }
@@ -304,6 +244,29 @@ const Store = {
   // ---------- Objetivo principal (helper) ----------
   objetivoPrincipal() {
     return this.data().objetivos.find((o) => o.esPrincipal) || this.data().objetivos[0] || null;
+  },
+
+  /** Cambia el Objetivo Estrella: activa `esPrincipal` en el elegido y lo
+   * desactiva en cualquier otro que lo tuviera (nunca puede haber más de
+   * uno a la vez). Sincroniza cada objetivo que cambió, igual que
+   * cualquier otro update. Si el id no existe, no hace nada. */
+  setObjetivoPrincipal(goalId) {
+    const objetivos = this.data().objetivos;
+    const nuevoPrincipal = objetivos.find((o) => o.id === goalId);
+    if (!nuevoPrincipal) return null;
+
+    const cambiados = [];
+    objetivos.forEach((o) => {
+      const debeSerPrincipal = o.id === goalId;
+      if (o.esPrincipal !== debeSerPrincipal) {
+        o.esPrincipal = debeSerPrincipal;
+        cambiados.push(o.id);
+      }
+    });
+
+    this.save();
+    cambiados.forEach((idCambiado) => this._syncPush("objetivos", idCambiado));
+    return nuevoPrincipal;
   },
 
   objetivoFinanzas() {

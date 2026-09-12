@@ -122,6 +122,9 @@ function renderDetalle() {
               <p class="text-secondary" style="font-size:var(--fs-sm); font-style:italic;">&ldquo;${escapeHTML(goal.tagline)}&rdquo;</p>
             </div>` : ""}
         </div>
+        <button type="button" class="icon-btn" style="${goal.esPrincipal ? "color:var(--color-accent-strong)" : ""}" aria-label="${goal.esPrincipal ? "Este es tu Objetivo Estrella" : "Marcar como Objetivo Estrella"}" title="${goal.esPrincipal ? "Objetivo Estrella actual" : "Marcar como Objetivo Estrella"}" onclick="handleSetPrincipal('${goal.id}')">
+          ${goal.esPrincipal ? ICONS.starFilled : ICONS.star}
+        </button>
         <button type="button" class="icon-btn" aria-label="Editar objetivo" onclick="openEditObjetivoDetalle()">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
         </button>
@@ -225,6 +228,11 @@ function mostrarCelebracion(tituloObjetivo) {
   if (typeof Notif !== "undefined") {
     Notif.notificarLogro(tituloObjetivo);
   }
+}
+
+function handleSetPrincipal(goalId) {
+  Store.setObjetivoPrincipal(goalId);
+  renderDetalle();
 }
 
 function handleCambiarImportancia(goalId, habitId, importancia) {

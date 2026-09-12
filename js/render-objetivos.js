@@ -15,7 +15,7 @@ function renderObjetivosLista() {
       ${thumbHTML(o.imagen, o.titulo, "goal-row__thumb")}
       <div class="goal-row__body">
         <div class="goal-row__title-row">
-          <span class="goal-row__title">${o.emoji ? o.emoji + " " : ""}${escapeHTML(o.titulo)}</span>
+          <span class="goal-row__title">${o.esPrincipal ? `<span style="color:var(--color-accent-strong)" title="Objetivo Estrella" aria-label="Objetivo Estrella">${ICONS.starFilled}</span> ` : ""}${o.emoji ? o.emoji + " " : ""}${escapeHTML(o.titulo)}</span>
           <span class="goal-row__percent">${o.porcentaje}%</span>
         </div>
         <div class="progress progress--thin"><div class="progress__fill" style="--value:${o.porcentaje}%"></div></div>
