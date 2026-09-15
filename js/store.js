@@ -18,6 +18,14 @@
 
 const STORAGE_KEY = "lifeos_data_v1";
 
+// Guarda qué cuenta es dueña de los datos que hay ahora mismo en
+// localStorage. No reemplaza el aislamiento real (eso lo da Firestore +
+// firestore.rules, por uid) — es solo la señal que necesita Sync.hydrate()
+// para notar que cambió la cuenta logueada en ESTE navegador y así evitar
+// que se filtren datos de una cuenta a otra mientras llega la respuesta
+// de Firestore (ver detalle en firestore-sync.js).
+const OWNER_KEY = "lifeos_owner_uid";
+
 function id() {
   return "id_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
 }
@@ -82,6 +90,26 @@ const Store = {
   /** Lo llama Sync.hydrate() una vez, al confirmar sesión. */
   setSyncUser(uid) {
     this._syncUid = uid;
+  },
+
+  /** uid dueño de los datos que hay ahora mismo en localStorage, o null
+   * si nunca se asoció a ninguna cuenta (primera vez en este navegador,
+   * o datos locales de antes de que existiera el login). */
+  ownerUid() {
+    try {
+      return localStorage.getItem(OWNER_KEY);
+    } catch (e) {
+      return null;
+    }
+  },
+
+  /** Marca qué cuenta es dueña de los datos locales actuales. */
+  setOwnerUid(uid) {
+    try {
+      localStorage.setItem(OWNER_KEY, uid);
+    } catch (e) {
+      console.error("Store: no se pudo guardar el dueño de los datos locales.", e);
+    }
   },
 
   /** Fire-and-forget: no bloquea ningún método que ya funcionaba síncrono. */

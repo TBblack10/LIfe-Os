@@ -7,6 +7,18 @@
 function renderProyectosGrid() {
   const proyectos = Store.list("proyectos");
   const el = document.getElementById("proyectosGrid");
+
+  if (!proyectos.length) {
+    el.innerHTML = `
+      <div class="empty-state fade-up" style="grid-column: 1 / -1">
+        ${ICONS.briefcase}
+        <span class="empty-state__title">Todavía no tenés proyectos</span>
+        <p class="empty-state__text">Los proyectos te ayudan a organizar objetivos grandes en pasos más simples y alcanzables.</p>
+        <button type="button" class="btn btn--accent btn--sm" style="margin-top:var(--space-2xs)" onclick="openNuevoProyecto()">Crear mi primer proyecto</button>
+      </div>`;
+    return;
+  }
+
   const cards = proyectos.map((p) => {
     const bg = thumbHTML(p.imagen, p.titulo, "project-card__bg");
     return `

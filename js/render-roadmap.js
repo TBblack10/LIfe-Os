@@ -6,7 +6,15 @@
 function renderHeroRoadmap() {
   const goal = Store.objetivoPrincipal();
   const el = document.getElementById("heroSection");
-  if (!goal) return;
+  if (!goal) {
+    el.innerHTML = `<div class="card" style="text-align:center; padding:var(--space-2xl)">
+      <span class="icon-lg" style="display:inline-flex; color:var(--color-accent-strong)">${ICONS.target}</span>
+      <p style="margin-top:var(--space-xs); font-family:var(--font-display); font-weight:var(--fw-semibold)">Empezá a construir tu Life OS</p>
+      <p class="text-secondary" style="margin-top:var(--space-3xs)">Todavía no tenés un Objetivo Estrella.<br>Elegí una meta importante y empezá a construir el camino hacia ella.</p>
+      <a href="objetivos.html" class="btn btn--accent btn--sm" style="margin-top:var(--space-sm)">Crear mi Objetivo Estrella</a>
+    </div>`;
+    return;
+  }
   const img = imageOrGradient(goal.imagen, goal.titulo);
   const bg = img.type === "image"
     ? `<img class="hero__bg" src="${img.value}" alt="${escapeHTML(goal.titulo)}">`
@@ -22,16 +30,17 @@ function renderHeroRoadmap() {
         <div class="hero__ring">
           <svg viewBox="0 0 100 100">
             <circle class="hero__ring-bg" cx="50" cy="50" r="42"/>
-            <circle class="hero__ring-fg" cx="50" cy="50" r="42" style="--pct:${goal.porcentaje}"></circle>
+            ${(goal.hitos || []).length ? `<circle class="hero__ring-fg" cx="50" cy="50" r="42" style="--pct:${goal.porcentaje}"></circle>` : ""}
           </svg>
           <div class="hero__ring-label">
-            <span class="hero__ring-pct">${goal.porcentaje}%</span>
-            <span class="hero__ring-text">Completado</span>
+            ${(goal.hitos || []).length
+              ? `<span class="hero__ring-pct">${goal.porcentaje}%</span><span class="hero__ring-text">Completado</span>`
+              : `<span class="hero__ring-text">Sin pasos aún</span>`}
           </div>
         </div>
         <div class="hero__meta">
-          <div class="hero__meta-item"><span>Próximo paso</span><span>${ICONS.book}${escapeHTML(goal.proximoPaso) || "Sin definir"}</span></div>
-          <div class="hero__meta-item"><span>Meta final</span><span>${ICONS.calendar}${escapeHTML(goal.metaFinal) || "Sin definir"}</span></div>
+          <div class="hero__meta-item"><span>Próximo paso</span><span>${ICONS.book}${escapeHTML(goal.proximoPaso) || "Por definir"}</span></div>
+          <div class="hero__meta-item"><span>Meta final</span><span>${ICONS.calendar}${escapeHTML(goal.metaFinal) || "Por definir"}</span></div>
         </div>
       </div>
     </div>

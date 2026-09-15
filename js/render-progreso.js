@@ -17,7 +17,7 @@ function renderObjetivosProgreso() {
   if (!el) return;
   const objetivos = Store.list("objetivos");
   if (!objetivos.length) {
-    el.innerHTML = `<p class="text-tertiary" style="padding:var(--space-sm)">Todavía no creaste ningún objetivo.</p>`;
+    el.innerHTML = `<p class="text-tertiary" style="padding:var(--space-sm)">Todavía no tenés objetivos activos. Cuando crees uno, vas a ver acá tu progreso real.</p>`;
     return;
   }
   el.innerHTML = objetivos.map((o) => {

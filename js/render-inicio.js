@@ -7,16 +7,152 @@
  */
 
 // ---------------------------------------------------------------
+// ONBOARDING DINÁMICO — reemplaza el hero mientras el usuario no
+// completó las 4 etapas iniciales. 100% derivado de datos reales de
+// Store (nada hardcodeado ni un flag "ya vi el onboarding"): si en
+// algún momento alguna etapa deja de cumplirse (ej. se borra el único
+// proyecto), vuelve a aparecer como pendiente — es un reflejo honesto
+// del estado actual, no un tutorial de una sola vez.
+// ---------------------------------------------------------------
+const ONBOARDING_MENSAJES = [
+  "Empecemos a construir tu Life OS",
+  "Ya empezaste. Sigamos construyendo.",
+  "Tu Life OS empieza a tomar forma.",
+  "Ya casi está.",
+  "Tu Life OS está en marcha.",
+];
+
+function getOnboardingState() {
+  const objetivos = Store.list("objetivos");
+  const habitos = Store.list("habitos");
+  const proyectos = Store.list("proyectos");
+
+  const etapas = [
+    {
+      key: "objetivoPrincipal",
+      emoji: "⭐",
+      titulo: "Objetivo principal",
+      texto: "Definí aquello que más querés conseguir.",
+      cta: "Crear objetivo",
+      accion: "openNuevoObjetivo()",
+      done: objetivos.length >= 1,
+    },
+    {
+      key: "primerHabito",
+      emoji: "🔄",
+      titulo: "Primer hábito",
+      texto: "Elegí una pequeña acción que quieras incorporar.",
+      cta: "Crear hábito",
+      accion: "openNuevoHabitoOnboarding()",
+      done: habitos.length >= 1,
+    },
+    {
+      key: "primerObjetivo",
+      emoji: "🎯",
+      titulo: "Primer objetivo",
+      texto: "Convertí algo que querés lograr en un objetivo concreto.",
+      cta: "Crear objetivo",
+      accion: "openNuevoObjetivo()",
+      done: objetivos.length >= 2,
+    },
+    {
+      key: "primerProyecto",
+      emoji: "🚀",
+      titulo: "Primer proyecto",
+      texto: "Organizá algo que estés construyendo.",
+      cta: "Crear proyecto",
+      accion: "openNuevoProyecto()",
+      done: proyectos.length >= 1,
+    },
+  ];
+
+  return { etapas, completadas: etapas.filter((e) => e.done).length, total: etapas.length };
+}
+
+/** Claves de etapa que estaban completas en el render anterior de esta
+ * sesión (no se persiste — al recargar la página se recalcula desde
+ * cero, así nunca puede "mentir" sobre el estado real). Se usa solo
+ * para dos cosas puramente visuales: marcar qué tarjeta "acaba de"
+ * completarse (animación) y evitar el parpadeo de celebración cuando
+ * una cuenta que YA tenía las 4 etapas simplemente recarga la página. */
+let onboardingEtapaKeysPrevias = new Set();
+
+function renderOnboarding(el, etapas, completadas, total, opts = {}) {
+  const nuevas = new Set(etapas.filter((e) => e.done).map((e) => e.key));
+
+  el.innerHTML = `
+    <div class="card onboarding fade-up ${opts.celebrando ? "is-celebrating" : ""}">
+      <div class="onboarding__intro">
+        <p class="onboarding__wave"><span class="onboarding__wave-emoji">👋</span> Bienvenido a Life OS</p>
+        <p class="text-secondary">Tu espacio para organizar lo que querés construir y convertirlo en acciones concretas.</p>
+      </div>
+
+      <div class="onboarding__progress-row">
+        <h2 class="onboarding__headline">${ONBOARDING_MENSAJES[completadas]}</h2>
+        <span class="tag tag--accent">${completadas}/${total} completados</span>
+      </div>
+      <div class="progress onboarding__progress-bar"><div class="progress__fill" style="--value:${(completadas / total) * 100}%"></div></div>
+
+      <div class="onboarding__grid stagger">
+        ${etapas.map((e, i) => {
+          const reciénCompletada = e.done && !onboardingEtapaKeysPrevias.has(e.key);
+          return `
+          <div class="onboarding-card ${e.done ? "is-done" : ""} ${reciénCompletada ? "is-newly-done" : ""}" style="animation-delay:${i * 60}ms">
+            <span class="onboarding-card__emoji">${e.done ? "✅" : e.emoji}</span>
+            <div class="onboarding-card__body">
+              <span class="onboarding-card__title">${escapeHTML(e.titulo)}${e.done ? ` <span class="onboarding-card__title-check">✓</span>` : ""}</span>
+              <p class="onboarding-card__text">${escapeHTML(e.texto)}</p>
+              ${e.done
+                ? `<span class="onboarding-card__done-tag">${ICONS.checkCircle} Completado</span>`
+                : `<button type="button" class="btn btn--accent btn--sm" onclick="${e.accion}">${escapeHTML(e.cta)}</button>`}
+            </div>
+          </div>`;
+        }).join("")}
+      </div>
+    </div>
+  `;
+
+  onboardingEtapaKeysPrevias = nuevas;
+}
+
+// ---------------------------------------------------------------
 // HERO
 // ---------------------------------------------------------------
 function renderHero() {
+  const { etapas, completadas, total } = getOnboardingState();
+  const el = document.getElementById("heroSection");
+
+  if (completadas < total) {
+    renderOnboarding(el, etapas, completadas, total);
+    return;
+  }
+
+  // Recién ahora llega a 4/4 en esta sesión (venía mostrando el
+  // onboarding con progreso real, no es solo una recarga de página de
+  // una cuenta que ya lo tenía completo): transición corta y se revela
+  // el dashboard de verdad.
+  const veníaIncompleto = onboardingEtapaKeysPrevias.size > 0 && onboardingEtapaKeysPrevias.size < total;
+  if (veníaIncompleto) {
+    renderOnboarding(el, etapas, completadas, total, { celebrando: true });
+    setTimeout(() => {
+      const elAhora = document.getElementById("heroSection");
+      if (elAhora) renderHeroDashboard();
+    }, 480);
+    return;
+  }
+
+  onboardingEtapaKeysPrevias = new Set(etapas.map((e) => e.key));
+  renderHeroDashboard();
+}
+
+function renderHeroDashboard() {
   const goal = Store.objetivoPrincipal();
   const el = document.getElementById("heroSection");
+  if (!el) return;
   if (!goal) {
-    el.innerHTML = `<div class="card" style="text-align:center; padding:var(--space-2xl)">
-      <p>Todavía no tenés un objetivo principal.</p>
-      <button class="btn btn--accent btn--sm" style="margin-top:var(--space-sm)" onclick="openNuevoObjetivo()">Crear objetivo principal</button>
-    </div>`;
+    // Defensivo: no debería pasar (el onboarding ya garantiza al menos
+    // un objetivo antes de llegar acá), pero por si acaso no se rompe.
+    renderOnboarding(el, getOnboardingState().etapas, 0, 4);
     return;
   }
   const img = imageOrGradient(goal.imagen, goal.titulo);
@@ -34,16 +170,17 @@ function renderHero() {
         <div class="hero__ring">
           <svg viewBox="0 0 100 100">
             <circle class="hero__ring-bg" cx="50" cy="50" r="42"/>
-            <circle class="hero__ring-fg" cx="50" cy="50" r="42" style="--pct:${goal.porcentaje}"></circle>
+            ${(goal.hitos || []).length ? `<circle class="hero__ring-fg" cx="50" cy="50" r="42" style="--pct:${goal.porcentaje}"></circle>` : ""}
           </svg>
           <div class="hero__ring-label">
-            <span class="hero__ring-pct">${goal.porcentaje}%</span>
-            <span class="hero__ring-text">Completado</span>
+            ${(goal.hitos || []).length
+              ? `<span class="hero__ring-pct">${goal.porcentaje}%</span><span class="hero__ring-text">Completado</span>`
+              : `<span class="hero__ring-text">Sin pasos aún</span>`}
           </div>
         </div>
         <div class="hero__meta">
-          <div class="hero__meta-item"><span>Próximo paso</span><span>${ICONS.book}${escapeHTML(goal.proximoPaso) || "Sin definir"}</span></div>
-          <div class="hero__meta-item"><span>Meta final</span><span>${ICONS.calendar}${escapeHTML(goal.metaFinal) || "Sin definir"}</span></div>
+          <div class="hero__meta-item"><span>Próximo paso</span><span>${ICONS.book}${escapeHTML(goal.proximoPaso) || "Por definir"}</span></div>
+          <div class="hero__meta-item"><span>Meta final</span><span>${ICONS.calendar}${escapeHTML(goal.metaFinal) || "Por definir"}</span></div>
         </div>
       </div>
       <div style="display:flex; gap:var(--space-2xs)">
@@ -69,7 +206,7 @@ function renderHoy() {
           <span class="checklist-item__box"></span>
           <span class="checklist-item__text">${escapeHTML(t.texto)}</span>
         </label>`).join("")
-    : `<p class="text-tertiary" style="padding: var(--space-sm) 0;">Todavía no agregaste tareas para hoy.</p>`;
+    : `<p class="text-tertiary" style="padding: var(--space-sm) 0;">No hay tareas para hoy. Un buen momento para planificar tu día o avanzar en alguno de tus objetivos.</p>`;
 
   const habitos = Store.list("habitos");
   const doneHoy = habitos.filter((h) => Store.isHabitDoneToday(h.id)).length;
@@ -82,7 +219,7 @@ function renderHoy() {
           <span class="checklist-item__box"></span>
           <span class="checklist-item__text">${escapeHTML(h.nombre)}</span>
         </label>`).join("")
-    : `<p class="text-tertiary" style="padding: var(--space-sm) 0;">Todavía no configuraste hábitos.</p>`;
+    : `<p class="text-tertiary" style="padding: var(--space-sm) 0;">Todavía no sumaste hábitos. Elegí uno simple y repetilo hoy.</p>`;
 }
 
 function handleToggleTask(taskId) {
@@ -103,22 +240,27 @@ function renderObjetivosResumen() {
   const objetivos = Store.list("objetivos");
   const el = document.getElementById("objetivosResumen");
   if (!objetivos.length) {
-    el.innerHTML = `<p class="text-tertiary" style="padding:var(--space-sm)">Todavía no creaste ningún objetivo.</p>`;
+    el.innerHTML = `<p class="text-tertiary" style="padding:var(--space-sm)">Todavía no creaste ningún objetivo. Empezá por el que más te importa.</p>`;
     return;
   }
-  el.innerHTML = objetivos.map((o) => `
+  el.innerHTML = objetivos.map((o) => {
+    const tienePasos = (o.hitos || []).length > 0;
+    return `
     <div class="goal-row" style="cursor:pointer" onclick="location.href='objetivo-detalle.html?id=${o.id}'">
       ${thumbHTML(o.imagen, o.titulo, "goal-row__thumb")}
       <div class="goal-row__body">
         <div class="goal-row__title-row">
           <span class="goal-row__title">${escapeHTML(o.titulo)}</span>
-          <span class="goal-row__percent">${o.porcentaje}%</span>
+          ${tienePasos
+            ? `<span class="goal-row__percent">${o.porcentaje}%</span>`
+            : `<span class="goal-row__percent text-tertiary" style="font-weight:var(--fw-regular)">Sin pasos aún</span>`}
         </div>
-        <div class="progress progress--thin"><div class="progress__fill" style="--value:${o.porcentaje}%"></div></div>
+        ${tienePasos ? `<div class="progress progress--thin"><div class="progress__fill" style="--value:${o.porcentaje}%"></div></div>` : ""}
       </div>
       <span class="goal-row__chevron">${ICONS.chevronRight}</span>
     </div>
-  `).join("");
+  `;
+  }).join("");
 }
 
 // ---------------------------------------------------------------
@@ -128,7 +270,7 @@ function renderHabitosResumen() {
   const habitos = Store.list("habitos");
   const el = document.getElementById("habitosResumen");
   if (!habitos.length) {
-    el.innerHTML = `<p class="text-tertiary" style="padding:var(--space-sm) 0">Todavía no creaste hábitos.</p>`;
+    el.innerHTML = `<p class="text-tertiary" style="padding:var(--space-sm) 0">Todavía no tenés hábitos. Sumá el primero y empezá a construir tu constancia.</p>`;
     return;
   }
   el.innerHTML = habitos.slice(-3).reverse().map((h) => {
@@ -153,7 +295,7 @@ function renderProyectosResumen() {
   const proyectos = Store.list("proyectos");
   const el = document.getElementById("proyectosResumen");
   if (!proyectos.length) {
-    el.innerHTML = `<p class="text-tertiary" style="padding:var(--space-sm) 0">Todavía no creaste proyectos.</p>`;
+    el.innerHTML = `<p class="text-tertiary" style="padding:var(--space-sm) 0">Todavía no tenés proyectos. Organizá tu próxima gran meta en pasos simples.</p>`;
     return;
   }
   el.innerHTML = proyectos.slice(-3).reverse().map((p) => `
@@ -172,11 +314,11 @@ function renderProyectosResumen() {
 // ROADMAP + PROGRESO — vista resumen (no editable en esta fase)
 // ---------------------------------------------------------------
 const ROADMAP_STEPS = [
-  { label: "Base de inglés", icon: "book" },
-  { label: "Fondo de ahorro", icon: "dollar" },
-  { label: "Certificación", icon: "graduation" },
-  { label: "Visa", icon: "briefcase" },
-  { label: "Noruega", icon: "plane" },
+  { label: "Primer paso", icon: "book" },
+  { label: "Buen ritmo", icon: "dollar" },
+  { label: "A mitad de camino", icon: "graduation" },
+  { label: "Recta final", icon: "briefcase" },
+  { label: "Meta cumplida", icon: "checkCircle" },
 ];
 const PROGRESO_AREAS = [
   { label: "Inglés", icon: "book" },
@@ -284,6 +426,38 @@ function openNuevoProyecto() {
     onSubmit: (values) => {
       Store.create("proyectos", { ...values, imagen: null });
       renderProyectosResumen();
+      renderHero();
+    },
+  });
+}
+
+/** Igual que openNuevoHabito() de render-habitos.js (mismos campos y
+ * misma llamada a Store.create), pero pensado para la tarjeta "Primer
+ * hábito" del onboarding de Inicio, que no carga ese archivo. No
+ * cambia la lógica de hábitos — solo permite crear uno desde acá. */
+function openNuevoHabitoOnboarding() {
+  Modal.open({
+    title: "Nuevo hábito",
+    fields: [
+      { key: "nombre", label: "¿Qué querés repetir?", type: "text", required: true, placeholder: "Ej: Salir a caminar" },
+      { key: "icono", label: "Ícono", type: "text", placeholder: "book, target, activity, heart-pulse..." },
+      { key: "fechaInicio", label: "Fecha de inicio", type: "date", required: true },
+      { key: "vecesPorSemana", label: "Veces por semana", type: "number", min: 1, max: 7 },
+    ],
+    values: { icono: "target", fechaInicio: todayISO(), vecesPorSemana: 7 },
+    submitLabel: "Crear hábito",
+    onSubmit: (values) => {
+      Store.create("habitos", {
+        nombre: values.nombre,
+        icono: values.icono || "target",
+        completions: [],
+        fechaInicio: values.fechaInicio || todayISO(),
+        vecesPorSemana: Math.max(1, Math.min(7, Number(values.vecesPorSemana) || 7)),
+        diasPreferidos: [],
+      });
+      renderHoy();
+      renderHabitosResumen();
+      renderHero();
     },
   });
 }

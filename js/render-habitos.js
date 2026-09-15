@@ -8,7 +8,13 @@ function renderHabitosLista() {
   const habitos = Store.list("habitos");
   const el = document.getElementById("habitosLista");
   if (!habitos.length) {
-    el.innerHTML = `<p class="text-tertiary" style="padding:var(--space-md)">Todavía no creaste ningún hábito.</p>`;
+    el.innerHTML = `
+      <div class="empty-state fade-up">
+        ${ICONS.repeat}
+        <span class="empty-state__title">Todavía no tenés hábitos</span>
+        <p class="empty-state__text">Los hábitos son las pequeñas acciones que, repetidas en el tiempo, te acercan a tus objetivos.</p>
+        <button type="button" class="btn btn--accent btn--sm" style="margin-top:var(--space-2xs)" onclick="openNuevoHabito()">Crear mi primer hábito</button>
+      </div>`;
     return;
   }
   el.innerHTML = habitos.map((h) => {

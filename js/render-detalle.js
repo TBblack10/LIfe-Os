@@ -50,7 +50,7 @@ function renderDetalle() {
             <span class="roadmap-step__label">${escapeHTML(p.texto)}</span>
           </div>`;
       }).join("")}</div>`
-    : `<p class="text-tertiary" style="padding: var(--space-sm) 0;">Todavía no agregaste pasos.</p>`;
+    : `<p class="text-tertiary" style="padding: var(--space-sm) 0;">Todavía no agregaste pasos. Dividí este objetivo en acciones concretas para ir avanzando de a poco.</p>`;
 
   const pasosListaHTML = totalPasos
     ? pasos.map((p, i) => `
@@ -134,16 +134,17 @@ function renderDetalle() {
         <div class="hero__ring ${alcanzado ? "celebracion-anillo" : ""}" id="objetivoRing">
           <svg viewBox="0 0 100 100">
             <circle class="hero__ring-bg" cx="50" cy="50" r="42"/>
-            <circle class="hero__ring-fg" cx="50" cy="50" r="42" style="--pct:${goal.porcentaje}"></circle>
+            ${totalPasos ? `<circle class="hero__ring-fg" cx="50" cy="50" r="42" style="--pct:${goal.porcentaje}"></circle>` : ""}
           </svg>
           <div class="hero__ring-label">
-            <span class="hero__ring-pct">${goal.porcentaje}%</span>
-            <span class="hero__ring-text">${alcanzado ? "¡Listo! ✓" : "Completado"}</span>
+            ${totalPasos
+              ? `<span class="hero__ring-pct">${goal.porcentaje}%</span><span class="hero__ring-text">${alcanzado ? "¡Listo! ✓" : "Completado"}</span>`
+              : `<span class="hero__ring-text">Sin pasos aún</span>`}
           </div>
         </div>
         <div>
           <div style="font-family:var(--font-display); font-weight:var(--fw-semibold)">${pasosHechos} de ${totalPasos} pasos completados</div>
-          <div class="hero__meta-item" style="margin-top:var(--space-2xs)"><span>Meta final</span><span>${ICONS.calendar}${escapeHTML(goal.metaFinal) || "Sin definir"}</span></div>
+          <div class="hero__meta-item" style="margin-top:var(--space-2xs)"><span>Meta final</span><span>${ICONS.calendar}${escapeHTML(goal.metaFinal) || "Por definir"}</span></div>
         </div>
       </div>
     </section>
@@ -253,7 +254,7 @@ function openVincularHabito() {
   if (!disponibles.length) {
     alert(Store.list("habitos").length
       ? "Ya vinculaste todos tus hábitos a este objetivo."
-      : "Todavía no creaste ningún hábito — creá uno primero desde la sección Hábitos.");
+      : "Todavía no tenés hábitos creados. Andá a la sección Hábitos y creá el primero.");
     return;
   }
 

@@ -59,3 +59,160 @@
   color: var(--color-text-tertiary);
 }
 
+/* ============================================
+   ONBOARDING DINÁMICO — reemplaza el hero mientras el usuario todavía
+   no completó las 4 etapas iniciales (ver render-inicio.js). Reutiliza
+   .card, .tag, .progress y los mismos tokens/keyframes que el resto de
+   la app (fade-up, celebracion-pulso) para que se sienta parte del
+   mismo diseño, no una pantalla aparte.
+   ============================================ */
+
+.onboarding__intro {
+  margin-bottom: var(--space-md);
+}
+
+.onboarding__wave {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-semibold);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xs);
+}
+
+.onboarding__wave-emoji {
+  display: inline-block;
+  animation: onboarding-wave 1.6s var(--ease-standard) 1;
+  transform-origin: 70% 70%;
+}
+
+.onboarding__progress-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-2xs);
+}
+
+.onboarding__headline {
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-semibold);
+  transition: opacity var(--duration-base) var(--ease-standard);
+}
+
+.onboarding__progress-bar {
+  margin-bottom: var(--space-md);
+}
+
+.onboarding__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-sm);
+}
+
+.onboarding-card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-xs);
+  padding: var(--space-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg-elevated);
+  transition: border-color var(--duration-base) var(--ease-standard),
+              background-color var(--duration-base) var(--ease-standard),
+              transform var(--duration-base) var(--ease-standard);
+}
+
+.onboarding-card:not(.is-done):hover {
+  border-color: var(--color-accent-border);
+  transform: translateY(-2px);
+}
+
+.onboarding-card__emoji {
+  font-size: var(--fs-xl);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.onboarding-card__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.onboarding-card__title {
+  display: block;
+  font-weight: var(--fw-semibold);
+  margin-bottom: var(--space-3xs);
+}
+
+.onboarding-card__title-check {
+  color: var(--color-success);
+}
+
+.onboarding-card__text {
+  font-size: var(--fs-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-2xs);
+}
+
+.onboarding-card.is-done {
+  background-color: var(--color-success-soft);
+  border-color: transparent;
+}
+
+.onboarding-card.is-done .onboarding-card__text {
+  color: var(--color-text-tertiary);
+}
+
+.onboarding-card__done-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3xs);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  color: var(--color-success);
+}
+
+/* Se agrega por JS solo a la tarjeta que ACABA de completarse en este
+   render, para que la transición pendiente -> hecho se sienta como un
+   paso desbloqueado y no como tildar un checkbox. */
+.onboarding-card.is-newly-done {
+  animation: onboarding-pop var(--duration-slow) var(--ease-standard) 1;
+}
+
+/* Transición breve al llegar a 4/4, antes de revelar el hero real. */
+.onboarding.is-celebrating {
+  animation: onboarding-dissolve var(--duration-slow) var(--ease-standard) both;
+}
+
+@keyframes onboarding-wave {
+  0%, 100% { transform: rotate(0deg); }
+  20% { transform: rotate(14deg); }
+  40% { transform: rotate(-8deg); }
+  60% { transform: rotate(14deg); }
+  80% { transform: rotate(-4deg); }
+}
+
+@keyframes onboarding-pop {
+  0% { transform: scale(0.97); box-shadow: 0 0 0 0 var(--color-success-soft); }
+  50% { transform: scale(1.015); box-shadow: 0 0 0 6px var(--color-success-soft); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 transparent; }
+}
+
+@keyframes onboarding-dissolve {
+  from { opacity: 1; transform: scale(1); }
+  to { opacity: 0; transform: scale(0.98); }
+}
+
+@media (max-width: 640px) {
+  .onboarding__grid {
+    grid-template-columns: 1fr;
+  }
+  .onboarding__progress-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3xs);
+  }
+}
+

@@ -37,6 +37,14 @@ p {
   height: 14px;
 }
 
+/* Ícono destacado suelto (ej. estados vacíos que reutilizan .card en vez
+   de .empty-state, como el hero sin Objetivo Estrella) */
+.icon-lg svg {
+  width: 40px;
+  height: 40px;
+  display: block;
+}
+
 .text-secondary {
   color: var(--color-text-secondary);
 }
